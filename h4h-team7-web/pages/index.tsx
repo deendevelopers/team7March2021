@@ -22,7 +22,8 @@ export default function Home() {
    * Testing creating posts and retrieving
    */
   useEffect(() => {
-    fetch("http://localhost:3000/api/post/create", {
+    const host = window.location.host;
+    fetch(`${host}/api/post/create`, {
       method: "POST",
       body: JSON.stringify({
         post: fakePost,
@@ -30,7 +31,7 @@ export default function Home() {
     })
       .then(console.log)
       .then(() => {
-        fetch("http://localhost:3000/api/post")
+        fetch(`${host}/api/post`)
           .then((res) => res.json())
           .then(console.log);
       });
