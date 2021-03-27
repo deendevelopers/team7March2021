@@ -34,6 +34,16 @@ const mockPosts: Post[] = [
     type: 'event',
     subtitle: 'Subhead'
   },
+  {
+    id: '4',
+    date: 'today',
+    description: 'A game of five a side football this Sunday on Clapham Common',
+    host: 'host',
+    location: 'my-location',
+    title: '5 a side football',
+    type: 'event',
+    subtitle: 'Subhead'
+  },
 ];
 
 export const getPosts = (): Post[] => {

@@ -8,9 +8,9 @@ type Props = {
 
 export const PostCard = ({ post }: Props) => {
   return (
-    <div className="p-56">
-      <div className="w-96 m-auto ">
-        <div className=" grid grid-cols-3 grid-rows-7 grid-flow-row overflow-hidden w-72 shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+    <div className="h-full">
+      <div className="m-auto h-full">
+        <div className=" grid grid-cols-3 grid-rows-7 grid-flow-row overflow-hidden h-full w-64 shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
           <div className="col-span-3 row-span-4 p-1 m-1">
             <a href="#">
               <img
@@ -54,12 +54,12 @@ export const PostCard = ({ post }: Props) => {
               </li>
             </ul>
           </div>
-  <div className="col-span-3 row-span-4">
-          <span className="rounded-full -ml-8 bg-gray-500 w-8 h-8"></span>
-          <span className="rounded-full -ml-8 bg-gray-500 w-8 h-8"></span>
-          <span className="rounded-full -ml-8 bg-gray-500 w-8 h-8"></span>
-          <span className="rounded-full -ml-8 bg-gray-500 w-8 h-8"></span>
-          <span className="rounded-full -ml-8 bg-gray-500 w-8 h-8"></span>
+  <div className="col-span-3 row-span-4 px-4">
+          <span className="inline-block rounded-full opacity-80 bg-gray-500 w-8 h-8"></span>
+          <span className="inline-block rounded-full -ml-3 opacity-80 bg-gray-500 w-8 h-8"></span>
+          <span className="inline-block rounded-full -ml-3 opacity-80 bg-gray-500 w-8 h-8"></span>
+          <span className="inline-block rounded-full -ml-3 opacity-80 bg-gray-500 w-8 h-8"></span>
+          <span className="inline-block rounded-full -ml-3 opacity-80 bg-gray-500 w-8 h-8"></span>
           </div>
         </div>
       </div>
