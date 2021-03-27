@@ -1,5 +1,6 @@
 import React from "react";
-import { Post } from '../../store/types';
+import { Post } from "../../store/types";
+import { POINT_CONVERSION_HYBRID } from "constants";
 
 type Props = {
   post: Post;
@@ -7,27 +8,54 @@ type Props = {
 
 export const PostCard = ({ post }: Props) => {
   return (
+    <div className="p-56">
+      <div className="w-96 m-auto ">
+        <div className=" grid grid-cols-3 grid-rows-7 grid-flow-row overflow-hidden w-72 shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+          <div className="col-span-3 row-span-4 p-1 m-1">
+            <a href="#">
+              <img
+                src="https://picsum.photos/640/400/?random"
+                alt="Placeholder"
+                className="object-cover h-48 w-full"
+              />
+            </a>
+          </div>
 
-  <div className="shadow-lg group container  rounded-md bg-white  max-w-sm flex justify-center items-center  mx-auto content-div">
-    <div>
-    <div  className="w-full image-cover rounded-t-md" >
-      <div className="p-2 m-4 w-16 h-16 text-center bg-gray-700 rounded-full text-white float-right fd-cl group-hover:opacity-25">
-        <span className="text-base tracking-wide  font-bold border-b border-white font-sans"> 12</span>
-          <span className="text-xs tracking-wide font-bold uppercase block font-sans">April</span>
+          <div className="col-span-3 row-span-1">
+            <div className="flex align-bottom flex-col leading-none px-4 py-0">
+              <div className="flex flex-row justify-between items-center">
+               
+                  <span className="text-sm font-light text-gray-500"> 
+                  {post.subtitle} </span>
+                
+              </div>
+            </div>
+          </div>
+
+          <div className="col-span-3 row-span-1">
+            <header className="flex items-center justify-between leading-tight p-2 md:p-4">
+              <h1 className="text-md">
+                <a className="no-underline hover:underline text-black" href="#">
+                  {post.title}
+                </a>
+              </h1>
+            </header>
+          </div>
+
+          <div className="col-span-3 row-span-1">
+            
+            <ul className="flex flex-row pl-2 text-gray-600 overflow-x-scroll hide-scroll-bar">
+              <li className="py-1">
+                <div className="transition duration-300 ease-in-out rounded-2xl mr-1 px-2 py-1 hover:bg-blue-200 hover:text-gray-800">
+                  <a className="" href="#">
+                    {post.description}
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-    <div className="py-8 px-4 bg-white  rounded-b-md fd-cl group-hover:opacity-25">
-        <span className="block text-lg text-gray-800 font-bold tracking-wide">{post.title}</span>
-        <span  className="block text-gray-600 text-sm">{post.description}
-        </span>
-    </div>
-    </div>
-    <div className="absolute opacity-0 fd-sh group-hover:opacity-100">
-    <span className="text-3xl font-bold text-white tracking-wider leading-relaxed font-sans">Paris city of light</span> 
-    <div className="pt-8 text-center">
-      <button className="text-center rounded-lg p-4 bg-white  text-gray-700 font-bold text-lg">Learn more</button>
-      </div>
-    </div>
     </div>
   );
 };

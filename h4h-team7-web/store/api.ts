@@ -12,6 +12,7 @@ const mockPosts: Post[] = [
     location: 'my-location',
     title: 'Coffee Meetup',
     type: 'event',
+    subtitle: 'Subhead'
   },
   {
     id: '2',
@@ -21,6 +22,7 @@ const mockPosts: Post[] = [
     location: 'my-location',
     title: 'Printing available',
     type: 'event',
+    subtitle: 'Subhead'
   },
   {
     id: '3',
@@ -30,6 +32,7 @@ const mockPosts: Post[] = [
     location: 'my-location',
     title: '5 a side football',
     type: 'event',
+    subtitle: 'Subhead'
   },
 ];
 
