@@ -18,8 +18,8 @@ class PostRepository {
     this.posts = [...this.posts, post];
   }
 
-  public editPost(post: Post): void {
-    this.posts = this.posts.map(p => p.id === post.id ? post: p)
+  public editPost(postId: number, post: Post): void {
+    this.posts = this.posts.map(p => p.id === post.id && p.id === postId ? post: p)
   }
 
   public deletePost(id: number): void {
