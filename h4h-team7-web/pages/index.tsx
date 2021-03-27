@@ -22,18 +22,21 @@ export default function Home() {
    * Testing creating posts and retrieving
    */
   useEffect(() => {
-    fetch("http://localhost:3000/api/post/create", {
-      method: "POST",
-      body: JSON.stringify({
-        post: fakePost,
-      }),
-    })
-      .then(console.log)
-      .then(() => {
-        fetch("http://localhost:3000/api/post")
-          .then((res) => res.json())
-          .then(console.log);
-      });
+    if (typeof window !== "undefined") {
+      const { host } = window.location;
+      fetch(`/api/post/create`, {
+        method: "POST",
+        body: JSON.stringify({
+          post: fakePost,
+        }),
+      })
+        .then(console.log)
+        .then(() => {
+          fetch(`/api/post`)
+            .then((res) => res.json())
+            .then(console.log);
+        });
+    }
   }, []);
 
   return <BaseLayout>Test</BaseLayout>;
