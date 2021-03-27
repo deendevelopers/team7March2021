@@ -1,5 +1,5 @@
 import React from "react";
-import { PostList } from "../components";
+import { PostList, InfoSection } from "../components";
 import { BaseLayout } from "../layouts/base-layout";
 import { StoreContext } from "../store/store-context";
 
@@ -8,7 +8,7 @@ export default function PostsPage() {
     <StoreContext.Consumer>
       {(state) => (
         <BaseLayout>
-
+          <InfoSection />
           <div className="flex items-center justify-center h-screen mx-20">
             <div>
             <h1 className="text-2xl mb-20">Clapham Notice Board</h1>
