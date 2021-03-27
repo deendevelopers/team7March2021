@@ -1,5 +1,4 @@
 import React, { PropsWithChildren } from "react";
-import { Title } from "..";
 import Link from "next/link";
 
 
@@ -17,17 +16,11 @@ export const Header = () => {
   return (
     <header className="h-24 sm:h-32 flex items-center top-0 right-0 z-20">
       <div className="container mx-auto px-6 sm:px-12 flex items-center justify-between">
-        <h1 className="font-bold underline">Notice</h1>
+        <Link href="/"><h1 className="font-bold underline cursor-pointer">Notice</h1></Link>
         <nav className="flex items-center">
-          <NavItem className="font-bold" href="/posts">Create a post</NavItem>
-          <NavItem className="underline" href="/register">Log In</NavItem>
+          <NavItem className="font-bold" href="/create-post">Create a post</NavItem>
+          <NavItem className="underline" href="/login">Log In</NavItem>
           <NavItem className="underline"href="/register">Sign Up</NavItem>
-
-          {/* <button className="ml-4 xl:ml-8 flex flex-col">
-            <span className="w-8 h-1 bg-gray-800 mb-1 rounded"></span>
-            <span className="w-8 h-1 bg-gray-800 mb-1 rounded"></span>
-            <span className="w-8 h-1 bg-gray-800 mb-1 rounded"></span>
-          </button> */}
         </nav>
       </div>
     </header>

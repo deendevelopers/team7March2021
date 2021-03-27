@@ -1,6 +1,5 @@
 import React from "react";
 import { Post } from "../../store/types";
-import { POINT_CONVERSION_HYBRID } from "constants";
 
 type Props = {
   post: Post;
@@ -10,7 +9,7 @@ export const PostCard = ({ post }: Props) => {
   return (
     <div className="h-full">
       <div className="m-auto h-full">
-        <div className=" grid grid-cols-3 grid-rows-7 grid-flow-row overflow-hidden h-full w-64 shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+        <div className=" grid grid-cols-3 grid-rows-7 grid-flow-row overflow-hidden h-full shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
           <div className="col-span-3 row-span-4 p-1 m-1">
             <a href="#">
               <img
