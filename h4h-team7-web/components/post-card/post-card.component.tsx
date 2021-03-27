@@ -54,6 +54,13 @@ export const PostCard = ({ post }: Props) => {
               </li>
             </ul>
           </div>
+  <div className="col-span-3 row-span-4">
+          <span className="rounded-full -ml-8 bg-gray-500 w-8 h-8"></span>
+          <span className="rounded-full -ml-8 bg-gray-500 w-8 h-8"></span>
+          <span className="rounded-full -ml-8 bg-gray-500 w-8 h-8"></span>
+          <span className="rounded-full -ml-8 bg-gray-500 w-8 h-8"></span>
+          <span className="rounded-full -ml-8 bg-gray-500 w-8 h-8"></span>
+          </div>
         </div>
       </div>
     </div>
