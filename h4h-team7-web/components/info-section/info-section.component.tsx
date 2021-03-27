@@ -16,14 +16,10 @@ const InfoItem = (props: PropsWithChildren<InfoItemProps>) => {
   );
 }
 
-
-
 export const InfoSection = () => {
-
   return (
     <div className="text-center p-10 flex items-center flex-col bg-gray-200">
       <h1 className="text-5xl mb-10">How it works</h1>
-
       <div className="flex justify-center">
         <InfoItem title="Choose your noticeboard" description="This is an introduction item. It has a fixed size so you can change it later"></InfoItem>
         <InfoItem title="See what's on offer" description="This is an introduction item. It has a fixed size so you can change it later"></InfoItem>
