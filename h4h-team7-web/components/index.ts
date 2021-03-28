@@ -10,3 +10,5 @@ export { InfoSection } from './info-section/info-section.component';
 export { Board } from './board/board.component';
 export { AccountCreated } from './account-created/account-created.component';
 export { Account } from './account/account.component';
+export { Button } from './button/button.component';
+export { PostTypeIndicator } from './post-type-indicator/post-type-indicator.component';
