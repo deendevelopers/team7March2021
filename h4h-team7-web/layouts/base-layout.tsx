@@ -19,7 +19,7 @@ export const BaseLayout = (props: Props) => {
       </Head>
 
       <Header />
-      <div className="relative w-full lg:w-2/3 flex m-auto justify-center bg-gray-100 md:bg-white">
+      <div className="relative w-full lg:w-2/3 flex m-auto justify-center md:bg-white">
         {props.children}
       </div>
     </div>

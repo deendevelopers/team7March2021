@@ -37,15 +37,15 @@ export default function LoginPage() {
   return (
     <BaseLayout>
       <div className="flex flex-col">
-        <h3 className="pt-4 text-2xl ml-8 lg:m-0 lg:text-center">
+        <h3 className="pt-4 text-3xl ml-8 lg:m-0 lg:text-center font-bold">
           Login or Sign up below
         </h3>
-        <span className="block w-2/3 lg:w-full ml-8 lg:ml-0 my-6 text-sm font-light text-gray-500 lg:text-center">
+        <span className="block w-2/3 lg:w-full ml-8 lg:ml-0 my-10 lg:text-center">
           Log in or sign up to make use of the full noticeboard and interact
           with postings.
         </span>
         <LoginForm onSubmit={login}></LoginForm>
-        <span className="block w-full text-lg font-light text-gray-500 lg:text-center text-center">
+        <span className="block w-full text-lg font-light text-gray-700 lg:text-center text-center">
           Or{" "}
         </span>
         <RegistrationForm onSubmit={register}></RegistrationForm>

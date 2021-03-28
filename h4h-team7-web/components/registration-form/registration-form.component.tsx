@@ -11,6 +11,10 @@ type Props = {
   onSubmit: (form: RegisterFormValues) => void;
 };
 
+const StyledInputDiv = (props) => (
+  <div className="flex flex-col mb-4">{props.children}</div>
+);
+
 export const RegistrationForm = (props: Props) => {
   const handleSubmit = (e) => {
     const { email, password, phone } = e.target.elements;
@@ -28,11 +32,11 @@ export const RegistrationForm = (props: Props) => {
       <div className="flex justify-center ml-0 my-6 lg:text-center">
         <div className="w-full xl:w-3/4 flex justify-center">
           <div className="w-full bg-white rounded-lg lg:rounded-l-none">
-            <h3 className="pt-4 ml-8 lg:ml-0 text-2xl lg:w-full w-2/3">
+            <h3 className="pt-4 ml-8 mb-6 lg:ml-0 text-3xl lg:w-full w-2/3 font-bold">
               Create an account
             </h3>
             <div className="flex px-8 justify-center">
-              <span className="text-sm font-light text-gray-500">
+              <span className="">
                 Sign up with your email address OR your phone number below.
               </span>
             </div>
@@ -41,79 +45,65 @@ export const RegistrationForm = (props: Props) => {
               onSubmit={handleSubmit}
             >
               <div className="mb-4 md:flex md:justify-between"></div>
-              <div className="mb-4">
-                <label
-                  className="block mb-2 text-sm font-bold text-gray-700"
-                  htmlFor="email"
-                >
+
+              <StyledInputDiv>
+                <label className="text-lg font-semibold" htmlFor="email">
                   Your email address
                 </label>
                 <input
-                  className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                   id="email"
+                  className="border-b text-lg py-2"
                   type="email"
                   placeholder="Email"
                 />
-              </div>
-              <div className="mb-4">
-                <label
-                  className="block mb-2 text-sm font-bold text-gray-700"
-                  htmlFor="phone"
-                >
+              </StyledInputDiv>
+              
+              <StyledInputDiv>
+                <label className="text-lg font-semibold" htmlFor="phone">
                   Your phone number
                 </label>
                 <input
-                  className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                   id="phone"
-                  type="number"
+                  className="border-b text-lg py-2"
                   placeholder="Phone number"
                 />
-              </div>
-
-              <div className="mb-4 md:flex md:justify-between">
-                <div className="mb-4 md:mr-2 md:mb-0">
-                  <label
-                    className="block mb-2 text-sm font-bold text-gray-700"
-                    htmlFor="password"
-                  >
-                    Your password
-                  </label>
-                  <input
-                    className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border border-red-500 rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                    id="password"
-                    type="password"
-                    placeholder="******************"
-                  />
-                  <p className="text-xs italic text-red-500">
+              </StyledInputDiv>
+              
+              <StyledInputDiv>
+                <label className="text-lg font-semibold" htmlFor="password">
+                  Your password
+                </label>
+                <input
+                  id="password"
+                  className="border-b text-lg py-2"
+                  type="password"
+                  placeholder="******************"
+                />
+              </StyledInputDiv>
+              
+                  <p className="text-xs italic text-red-500 mb-6">
                     Please choose a password.
                   </p>
-                </div>
-                <div className="md:ml-2">
-                  <label
-                    className="block mb-2 text-sm font-bold text-gray-700"
-                    htmlFor="c_password"
-                  >
-                    Confirm Password
-                  </label>
-                  <input
-                    className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                    id="c_password"
-                    type="password"
-                    placeholder="******************"
-                  />
-                </div>
-              </div>
+                
+                  <StyledInputDiv>
+                <label className="text-lg font-semibold" htmlFor="c_password">
+                  Confirm password
+                </label>
+                <input
+                  id="c_password"
+                  className="border-b text-lg py-2"
+                  type="password"
+                  placeholder="******************"
+                />
+              </StyledInputDiv>
+                
+              
               <div className="mb-6 text-center">
                 <Button type="submit">Register</Button>
               </div>
               <hr className="mb-6 border-t" />
               <div className="text-center">
-                <a
-                  className="inline-block text-sm text-pink-400 align-baseline hover:text-pink-300"
-                  href="#"
-                >
-                  Forgot Password?
-                </a>
+               
               </div>
             </form>
           </div>
