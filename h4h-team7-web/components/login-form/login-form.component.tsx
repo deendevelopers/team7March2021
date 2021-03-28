@@ -3,7 +3,7 @@ import { BaseLayout } from "../../layouts/base-layout";
 
 export const LoginForm = () => {
   return (
-    <BaseLayout>
+   
       <div className="container mx-auto">
         <div className="flex justify-center px-6 my-12">
           <div className="w-full xl:w-3/4 lg:w-11/12 flex">
@@ -73,6 +73,6 @@ export const LoginForm = () => {
           </div>
         </div>
       </div>
-    </BaseLayout>
+    
   );
 };

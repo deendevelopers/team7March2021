@@ -8,3 +8,5 @@ export { PostCard } from './post-card/post-card.component';
 export { PostList } from './post-list/post-list.component';
 export { InfoSection } from './info-section/info-section.component';
 export { Board } from './board/board.component';
+export { AccountCreated } from './account-created/account-created.component';
+export { Account } from './account/account.component';
