@@ -3,7 +3,7 @@ import { BaseLayout } from "../../layouts/base-layout";
 
 export const RegistrationForm = () => {
   return (
-    <BaseLayout>
+ 
       <div className="container mx-auto">
         <div className="flex justify-center px-6 my-12">
           <div className="w-full xl:w-3/4 lg:w-11/12 flex">
@@ -15,49 +15,22 @@ export const RegistrationForm = () => {
             ></div>
             <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
               <h3 className="px-8 pb-12 text-2xl font-bold">
-                Sign Up
+                Create an account
               </h3>
               <div className="flex px-8">
-              <span className="font-light text-gray-500">Already have an account?</span>
-              <a href="/login" className="font-bold text-gray-70">Log in</a>
+              <span className="font-light text-gray-500">Sign up with your email address OR your phone number below.</span>
+             
               </div>
               <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
                 <div className="mb-4 md:flex md:justify-between">
-                  <div className="mb-4 md:mr-2 md:mb-0">
-                    <label
-                      className="block mb-2 text-sm font-bold text-gray-700"
-                      htmlFor="firstName"
-                    >
-                      First Name
-                    </label>
-                    <input
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                      id="firstName"
-                      type="text"
-                      placeholder="First Name"
-                    />
-                  </div>
-                  <div className="md:ml-2">
-                    <label
-                      className="block mb-2 text-sm font-bold text-gray-700"
-                      htmlFor="lastName"
-                    >
-                      Last Name
-                    </label>
-                    <input
-                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                      id="lastName"
-                      type="text"
-                      placeholder="Last Name"
-                    />
-                  </div>
+                  
                 </div>
                 <div className="mb-4">
                   <label
                     className="block mb-2 text-sm font-bold text-gray-700"
                     htmlFor="email"
                   >
-                    Email
+                    Your email address
                   </label>
                   <input
                     className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
@@ -66,13 +39,28 @@ export const RegistrationForm = () => {
                     placeholder="Email"
                   />
                 </div>
+                <div className="mb-4">
+                  <label
+                    className="block mb-2 text-sm font-bold text-gray-700"
+                    htmlFor="phone"
+                  >
+                    Your phone number
+                  </label>
+                  <input
+                    className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    id="phone"
+                    type="number"
+                    placeholder="Phone number"
+                  />
+                </div>
+
                 <div className="mb-4 md:flex md:justify-between">
                   <div className="mb-4 md:mr-2 md:mb-0">
                     <label
                       className="block mb-2 text-sm font-bold text-gray-700"
                       htmlFor="password"
                     >
-                      Password
+                      Your password
                     </label>
                     <input
                       className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border border-red-500 rounded shadow appearance-none focus:outline-none focus:shadow-outline"
@@ -104,7 +92,7 @@ export const RegistrationForm = () => {
                     className="w-full px-4 py-2 font-bold text-white bg-teal-400 hover:bg-teal-300 focus:outline-none focus:shadow-outline"
                     type="button"
                   >
-                    Register Account
+                    Sign up
                   </button>
                 </div>
                 <hr className="mb-6 border-t" />
@@ -116,19 +104,12 @@ export const RegistrationForm = () => {
                     Forgot Password?
                   </a>
                 </div>
-                <div className="text-center">
-                  <a
-                    className="inline-block text-sm text-teal-400 align-baseline hover:text-teal-300"
-                    href="./index.html"
-                  >
-                    Already have an account? Login!
-                  </a>
-                </div>
+          
               </form>
             </div>
           </div>
         </div>
       </div>
-    </BaseLayout>
+    
   );
 };
