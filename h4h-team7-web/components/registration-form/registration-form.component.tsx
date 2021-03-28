@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from '..';
 import { BaseLayout } from "../../layouts/base-layout";
 
 export const RegistrationForm = () => {
@@ -88,12 +89,7 @@ export const RegistrationForm = () => {
                   </div>
                 </div>
                 <div className="mb-6 text-center">
-                  <button
-                    className="w-full px-4 py-2 font-bold text-white bg-teal-400 hover:bg-teal-300 focus:outline-none focus:shadow-outline"
-                    type="button"
-                  >
-                    Sign up
-                  </button>
+                  <Button>Sign Up</Button>
                 </div>
                 <hr className="mb-6 border-t" />
                 <div className="text-center">

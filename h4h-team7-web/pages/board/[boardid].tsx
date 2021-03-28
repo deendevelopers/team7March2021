@@ -5,7 +5,6 @@ import { InfoSection, Board } from "../../components";
 import { BaseLayout } from "../../layouts/base-layout";
 import { StoreContext } from "../../store/store-context";
 
-
 const allowedLocations = [
   'clapham',
   'brixton',
@@ -16,15 +15,14 @@ const allowedLocations = [
 
 export default function BoardPage() {
   const router = useRouter()
-  const { boardid } = router.query;
+  const { boardid = '' } = router.query;
 
   useEffect(() => {
-    if (!allowedLocations.includes(((boardid || '') as string).toLocaleLowerCase())) {
-      router.push('/home');
+    if (!allowedLocations.includes((boardid as string).toLocaleLowerCase())) {
+      router.push('/');
     }
   }, []);
 
-  
   return (
     <StoreContext.Consumer>
       {(state) => (

@@ -6,7 +6,7 @@ export type Post = {
   subtitle: string;
   host: string;
   location: string;
-  type: string;
+  type: 'event' | 'service';
   date: string;
   description: string;
 };
