@@ -14,9 +14,13 @@ export const RegistrationForm = () => {
               }}
             ></div>
             <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
-              <h3 className="pt-4 text-2xl text-center">
-                Join the Community Board
+              <h3 className="px-8 pb-12 text-2xl font-bold">
+                Sign Up
               </h3>
+              <div className="flex px-8">
+              <span className="font-light text-gray-500">Already have an account?</span>
+              <a href="/login" className="font-bold text-gray-70">Log in</a>
+              </div>
               <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
                 <div className="mb-4 md:flex md:justify-between">
                   <div className="mb-4 md:mr-2 md:mb-0">
@@ -97,7 +101,7 @@ export const RegistrationForm = () => {
                 </div>
                 <div className="mb-6 text-center">
                   <button
-                    className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                    className="w-full px-4 py-2 font-bold text-white bg-teal-400 hover:bg-teal-300 focus:outline-none focus:shadow-outline"
                     type="button"
                   >
                     Register Account
@@ -106,7 +110,7 @@ export const RegistrationForm = () => {
                 <hr className="mb-6 border-t" />
                 <div className="text-center">
                   <a
-                    className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                    className="inline-block text-sm text-teal-400 align-baseline hover:text-teal-300"
                     href="#"
                   >
                     Forgot Password?
@@ -114,7 +118,7 @@ export const RegistrationForm = () => {
                 </div>
                 <div className="text-center">
                   <a
-                    className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                    className="inline-block text-sm text-teal-400 align-baseline hover:text-teal-300"
                     href="./index.html"
                   >
                     Already have an account? Login!
