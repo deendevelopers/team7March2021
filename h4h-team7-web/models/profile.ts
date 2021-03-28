@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 export interface ProfileInterface {
     auth_id: string;
+    _id: string;
     username: string;
     email: string;
     mobile: string;

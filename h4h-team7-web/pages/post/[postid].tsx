@@ -16,7 +16,7 @@ export default function PostDetailsPage() {
   const { postid } = router.query;
   console.log(router.query);
 
-  const { posts } = useContext(StoreContext);
+  const { posts = [] } = useContext(StoreContext);
   const post = posts.find((post) => post.id === postid);
 
   useEffect(() => {

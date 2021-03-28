@@ -25,10 +25,10 @@ export const getProfileById = async (profileId: number): Promise<ProfileInterfac
 }
 
 export const updateProfileById = async (profile: ProfileInterface): Promise<{ id: string }> => {
-  return await apiFetch(`${PROFILE_ENDPOINT}/${profile.id}`, {
+  return await apiFetch(`${PROFILE_ENDPOINT}/${profile._id}`, {
     method: PUT,
     body: JSON.stringify({ profile })
-  }).then(() => ({ id: `${profile.id}` }) )
+  }).then(() => ({ id: `${profile._id}` }) )
 }
 
 export const deleteProfileById = async (profileId: number): Promise<{ id: string }> => {
