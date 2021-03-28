@@ -1,0 +1,466 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Notice board backend API documentation",
+    "version": "1.0.0",
+    "title": "Notice",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "petstore.swagger.io",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "post",
+      "description": "All endpoints for posts and listings",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/post": {
+      "get": {
+        "tags": [
+          "post"
+        ],
+        "summary": "Get all posts",
+        "description": "Get all posts for a notice board",
+        "operationId": "getAllPosts",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Post"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/post/create": {
+      "post": {
+        "tags": [
+          "post"
+        ],
+        "summary": "Create a post",
+        "description": "Create a post",
+        "operationId": "createPost",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "post",
+            "description": "Post object to create",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "post": {
+                  "$ref": "#/definitions/Post"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/post/{postId}": {
+      "get": {
+        "tags": [
+          "post"
+        ],
+        "summary": "Get a post",
+        "description": "Get a post by id",
+        "operationId": "getPostById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "description": "ID of post to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success - Post found",
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          },
+          "404": {
+            "description": "Post not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "post"
+        ],
+        "summary": "Update a post",
+        "description": "Update a post by id",
+        "operationId": "updatePostById",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "description": "ID of post to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "post",
+            "description": "Post object to update",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "post": {
+                  "$ref": "#/definitions/Post"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success - Post updated"
+          },
+          "404": {
+            "description": "Post not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "post"
+        ],
+        "summary": "Delete a post",
+        "description": "Delete a post by id",
+        "operationId": "deletePostById",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "description": "ID of post to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success - Post deleted"
+          },
+          "404": {
+            "description": "Post not found"
+          }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "tags": [
+          "profile"
+        ],
+        "summary": "Get all users profile",
+        "description": "Get all user profiles",
+        "operationId": "getAllProfiles",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Profile"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile/create": {
+      "post": {
+        "tags": [
+          "profile"
+        ],
+        "summary": "Create a user profile",
+        "description": "Create a user profile",
+        "operationId": "createProfile",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "profile",
+            "description": "Profile object to update",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "profile": {
+                  "$ref": "#/definitions/Profile"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/profile/{profileId}": {
+      "get": {
+        "tags": [
+          "profile"
+        ],
+        "summary": "Get a users profile",
+        "description": "Get the profile for a user by their ID",
+        "operationId": "getProfileById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "description": "ID of profile to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success - Profile found",
+            "schema": {
+              "$ref": "#/definitions/Profile"
+            }
+          },
+          "404": {
+            "description": "Profile not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "profile"
+        ],
+        "summary": "Update a users profile",
+        "description": "Update the profile for a user by their ID",
+        "operationId": "updateProfileById",
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "description": "ID of profile to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "profile",
+            "description": "Profile object to update",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "profile": {
+                  "$ref": "#/definitions/Profile"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success - Profile updated"
+          },
+          "404": {
+            "description": "Profile not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "profile"
+        ],
+        "summary": "Delete a user profile",
+        "description": "Delete the profile for a user by their ID",
+        "operationId": "deleteProfileById",
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "description": "ID of profile to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success - Profile deleted"
+          },
+          "404": {
+            "description": "Profile not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Profile": {
+      "type": "object",
+      "required": [
+        "username",
+        "languages",
+        "profile_image"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "username": {
+          "type": "string"
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "English",
+            "Spanish"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "example": "testing@gmail.com"
+        },
+        "mobile": {
+          "type": "string",
+          "example": "+447755443322"
+        },
+        "profile_image": {
+          "type": "string",
+          "example": "https://google.co.uk"
+        }
+      }
+    },
+    "Location": {
+      "type": "object",
+      "required": [
+        "name",
+        "postcode"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Clapham Common Bandstand"
+        },
+        "postcode": {
+          "type": "string",
+          "example": "SW4 0BZ"
+        }
+      }
+    },
+    "Post": {
+      "type": "object",
+      "required": [
+        "title",
+        "description",
+        "location",
+        "date",
+        "host_username",
+        "host_languages"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string",
+          "example": "Post Title"
+        },
+        "description": {
+          "type": "string",
+          "example": "This is the posts description"
+        },
+        "location": {
+          "$ref": "#/definitions/Location"
+        },
+        "date": {
+          "type": "string",
+          "example": "01-01-2020T13:00:00"
+        },
+        "host_username": {
+          "type": "string",
+          "example": "username1904"
+        },
+        "host_email": {
+          "type": "string",
+          "example": "testing@gmail.com"
+        },
+        "host_number": {
+          "type": "string",
+          "example": "+447755443322"
+        },
+        "host_languages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "English",
+            "Spanish"
+          ]
+        },
+        "host_profile_image": {
+          "type": "string",
+          "example": "https://google.co.uk"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
