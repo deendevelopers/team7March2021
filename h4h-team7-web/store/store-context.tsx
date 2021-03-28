@@ -4,12 +4,12 @@ import "./firebase";
 import React, { PropsWithChildren, useEffect, useState } from "react";
 import { LoginFormValues } from "../components/login-form/login-form.component";
 import { RegisterFormValues } from "../components/registration-form/registration-form.component";
-import { getPosts } from "./api";
-import { Post } from "./types";
-import { auth } from './firebase';
+import { getPosts } from "./api/post";
+import { auth } from "./firebase";
+import { PostInterface } from "../models/post";
 
 const initialState: StoreContextState = {
-  posts: [],
+  posts: undefined,
   loggedIn: false,
   registrationSuccess: undefined,
 };
@@ -21,7 +21,7 @@ export const StoreContext = React.createContext<StoreContextValue>({
 });
 
 type StoreContextState = {
-  posts: Post[];
+  posts: PostInterface[];
   loggedIn: boolean;
   registrationSuccess?: boolean;
   user?: firebase.User;
@@ -46,7 +46,7 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        
+
         setState({
           ...state,
           registrationSuccess: true,
@@ -74,7 +74,7 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log({ user })
+        console.log({ user });
 
         setState({
           ...state,
@@ -98,9 +98,13 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
   };
 
   useEffect(() => {
-    const posts = getPosts();
-    setState((prevState) => ({ ...prevState, posts }));
-  }, []);
+    const fetchPosts = async () => {
+      console.log("Getting posts");
+      const posts = await getPosts();
+      setState((prevState) => ({ ...prevState, posts }));
+    };
+    if (!state.posts) fetchPosts();
+  }, [state.posts]);
 
   const contextValue = {
     ...state,

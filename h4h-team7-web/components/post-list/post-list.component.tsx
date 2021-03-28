@@ -1,17 +1,15 @@
 import React from "react";
 import { PostCard } from "..";
-import { Post } from '../../store/types';
+import { PostInterface } from "../../models/post";
 
 type Props = {
-  posts: Post[];
+  posts: PostInterface[];
 };
 
 export const PostList = ({ posts }: Props) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 px-6 w-full">
-      {posts.map((post) => (
-        <PostCard key={post.id} post={post} />
-      ))}
-  </div>
+      {posts && posts.map((post) => <PostCard key={post.id} post={post} />)}
+    </div>
   );
 };

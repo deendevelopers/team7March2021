@@ -1,8 +1,7 @@
 import { apiFetch, POST_ENDPOINT, toJson, POST, GET, PUT, DELETE } from "."
 import { PostInterface } from "../../models/post"
-import { Post } from "../types"
 
-export const getPostsReal = async (): Promise<Post[]> => {
+export const getPosts = async (): Promise<PostInterface[]> => {
   return await apiFetch(POST_ENDPOINT).then(toJson)
 }
 
@@ -13,7 +12,7 @@ export const createPost = async (post: PostInterface): Promise<{ id: string }> =
   }).then(toJson)
 }
 
-export const getPostById = async (postId: number): Promise<Post | undefined> => {
+export const getPostById = async (postId: number): Promise<PostInterface | undefined> => {
   return await apiFetch(`${POST_ENDPOINT}/${postId}`, {
     method: GET,
   }).then(toJson)

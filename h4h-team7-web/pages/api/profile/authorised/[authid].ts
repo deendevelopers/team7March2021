@@ -12,15 +12,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     var profileAuthId: string = authid as string;
 
     switch (req.method) {
-      case "DELETE":
-        //await ProfileRepository.deleteProfile(profileIdString)
-        res.status(200).send
-        break;
-      case "PUT":
-        // const { updatedprofile } = req.body 
-        // ProfileRepository.editProfile(updatedprofile)
-        res.status(200).send
-        break;
       case "GET":
         const profile =  await ProfileRepository.getByAuthId(profileAuthId)
         if (profile) res.status(200).json(profile)

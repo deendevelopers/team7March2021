@@ -16,14 +16,14 @@ class ProfileRepository {
     return await MongoProfile.create(profile)
   }
 
-  public async editProfile(profile: ProfileInterface): Promise<void> {
-    return await MongoProfile.findByIdAndUpdate(profile.id, profile, {}, () => {
+  public async editProfile(mongoId: string): Promise<void> {
+    return await MongoProfile.findByIdAndUpdate(mongoId, {}, () => {
       console.log("updated")
     })
   }
 
   public async getByAuthId(profileAuthId: string) {
-    return await MongoProfile.find({auth_id: profileAuthId}).exec();
+    return await MongoProfile.findOne({auth_id: profileAuthId}).exec();
   }
 
   public async getProfileById(id: string): Promise<ProfileInterface | undefined> {

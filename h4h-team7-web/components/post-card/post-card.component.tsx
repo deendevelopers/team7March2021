@@ -1,10 +1,10 @@
 import Link from "next/link";
 import React from "react";
-import { Post } from "../../store/types";
-import { PostTypeIndicator } from '../post-type-indicator/post-type-indicator.component';
+import { PostInterface } from "../../models/post";
+import { PostTypeIndicator } from "../post-type-indicator/post-type-indicator.component";
 
 type Props = {
-  post: Post;
+  post: PostInterface;
 };
 
 export const PostCard = ({ post }: Props) => {
@@ -23,17 +23,16 @@ export const PostCard = ({ post }: Props) => {
               </a>
             </div>
 
-            
-              <div>
-                <div className="flex align-bottom flex-col leading-none py-0">
-                  <div className="flex flex-row justify-between items-center">
-                    <span className="text-sm font-light text-gray-500">
-                      {post.type === 'event' && `${post.date} • `}
-                      {post.location}
-                    </span>
-                  </div>
+            <div>
+              <div className="flex align-bottom flex-col leading-none py-0">
+                <div className="flex flex-row justify-between items-center">
+                  <span className="text-sm font-light text-gray-500">
+                    {post.type === "event" && `${post.date} • `}
+                    {post.location}
+                  </span>
                 </div>
               </div>
+            </div>
 
             <div>
               <header className="flex items-center justify-between leading-tight ">
@@ -48,7 +47,7 @@ export const PostCard = ({ post }: Props) => {
               </header>
             </div>
 
-            <div >
+            <div>
               <ul className="flex flex-row text-gray-600 overflow-x-scroll hide-scroll-bar">
                 <li className="py-1">
                   <div className="transition duration-300 ease-in-out rounded-2xl mr-1 py-1">
@@ -62,9 +61,9 @@ export const PostCard = ({ post }: Props) => {
 
             <div className="flex">
               <div className="flex-grow">
-              <p>Education • Job skills</p>
-            </div>
-            {/* <div className="col-span-3 row-span-4 ">
+                <p>Education • Job skills</p>
+              </div>
+              {/* <div className="col-span-3 row-span-4 ">
               <span className="inline-block rounded-full opacity-80 bg-gray-500 w-8 h-8"></span>
               <span className="inline-block rounded-full -ml-3 opacity-80 bg-gray-500 w-8 h-8"></span>
               <span className="inline-block rounded-full -ml-3 opacity-80 bg-gray-500 w-8 h-8"></span>
@@ -72,7 +71,7 @@ export const PostCard = ({ post }: Props) => {
               <span className="inline-block rounded-full -ml-3 opacity-80 bg-gray-500 w-8 h-8"></span>
             </div> */}
 
-            <PostTypeIndicator type={post.type} ></PostTypeIndicator>
+              <PostTypeIndicator type={post.type}></PostTypeIndicator>
             </div>
           </div>
         </div>
