@@ -143,7 +143,7 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
     const fetchPosts = async () => {
       console.log("Getting posts");
       const posts = await getPosts();
-      setState((prevState) => ({ ...prevState, posts }));
+      setState((prevState) => ({ ...prevState, posts: posts.map(p => ({ ...p, type: Math.random() > 0.5 ? 'event' : 'service' })) }));
     };
     if (!state.posts) fetchPosts();
   }, [state.posts]);
