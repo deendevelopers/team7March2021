@@ -1,5 +1,6 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useContext } from "react";
 import Link from "next/link";
+import { StoreContext } from "../../store/store-context";
 
 const NavItem = (
   props: PropsWithChildren<{ href?: string; className?: string }>
@@ -15,8 +16,9 @@ const NavItem = (
   );
 };
 
-
 export const Header = () => {
+  const { user, loggedIn } = useContext(StoreContext);
+
   return (
     <header className="lg:h-24 h-24 flex justify-between items-center top-0 right-0 z-20 ">
       <div className="container mx-auto px-4 lg:px-0 flex items-center justify-between">
@@ -33,9 +35,16 @@ export const Header = () => {
             <NavItem className="font-bold" href="/create-post">
               Create a post
             </NavItem>
-            <NavItem className="underline hover:bold" href="/login">
-              Log In
-            </NavItem>
+
+            {loggedIn ? (
+              <NavItem className="underline hover:bold" href="/profile">
+                {user.email}
+              </NavItem>
+            ) : (
+              <NavItem className="underline hover:bold" href="/login">
+                Log In
+              </NavItem>
+            )}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"

@@ -13,7 +13,7 @@ export const PostCard = ({ post }: Props) => {
       <div className="h-full cursor-pointer">
         <div className="m-auto h-full">
           <div className="rounded-xl p-4 overflow-hidden h-full shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
-            <div className="hidden lg:block col-span-3 row-span-4 ">
+            <div className="hidden col-span-3 row-span-4 ">
               <a href="#">
                 <img
                   src="https://picsum.photos/640/400/?random"
