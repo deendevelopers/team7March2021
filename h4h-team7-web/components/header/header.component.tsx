@@ -17,7 +17,7 @@ const NavItem = (
 };
 
 export const Header = () => {
-  const { user, loggedIn } = useContext(StoreContext);
+  const { user } = useContext(StoreContext);
 
   return (
     <header className="lg:h-24 h-24 flex justify-between items-center top-0 right-0 z-20 ">
@@ -36,7 +36,7 @@ export const Header = () => {
               Create a post
             </NavItem>
 
-            {loggedIn ? (
+            {user ? (
               <NavItem className="underline hover:bold" href="/profile">
                 {user.email}
               </NavItem>

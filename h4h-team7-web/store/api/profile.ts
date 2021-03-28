@@ -12,10 +12,24 @@ export const createProfile = async (profile: ProfileInterface): Promise<{ id: st
   }).then(toJson)
 }
 
+export class ProfileNotFoundError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "ProfileNotFoundError";
+  }
+}
+
 export const signInAndGetProfile = async (authId: string): Promise<ProfileInterface | undefined> => {
   return await apiFetch(`${PROFILE_ENDPOINT}/authorised/${authId}`, {
     method: GET,
-  }).then(toJson)
+  }).then(res => {
+    switch (res.status) {
+      case 404:
+        throw new ProfileNotFoundError("Not found")
+      default:
+        return res.json()
+    }
+  })
 }
 
 export const getProfileById = async (profileId: number): Promise<ProfileInterface | undefined> => {

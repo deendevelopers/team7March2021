@@ -5,7 +5,7 @@ export const getPosts = async (): Promise<PostInterface[]> => {
   return await apiFetch(POST_ENDPOINT).then(toJson)
 }
 
-export const createPost = async (post: PostInterface): Promise<{ id: string }> => {
+export const createPost = async (post: PostInterface): Promise<{ _id: string }> => {
   return await apiFetch(POST_ENDPOINT + "/create", {
     method: POST,
     body: JSON.stringify({ post })

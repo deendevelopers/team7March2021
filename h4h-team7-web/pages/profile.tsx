@@ -4,17 +4,21 @@ import { BaseLayout } from "../layouts/base-layout";
 import { StoreContext } from "../store/store-context";
 
 export default function ProfilePage() {
-  const { loggedIn, user } = useContext(StoreContext);
+  const { user } = useContext(StoreContext);
   const router = useRouter();
 
   useEffect(() => {
-    if (!loggedIn || !user) {
+    if (!user) {
       router.push("/login");
     }
-  }, [loggedIn, user]);
+  }, [user]);
 
   if (!user) {
-    return <BaseLayout><p>Loading...</p></BaseLayout>;
+    return (
+      <BaseLayout>
+        <p>Loading...</p>
+      </BaseLayout>
+    );
   }
 
   return (

@@ -7,29 +7,47 @@ import { RegisterFormValues } from "../components/registration-form/registration
 import { getPosts } from "./api/post";
 import { auth } from "./firebase";
 import { PostInterface } from "../models/post";
+import { ProfileInterface } from "../models/profile";
+import { createPost as apiCreatePost } from "./api/post";
+import router from "next/router";
+import { GetUserProfileRequest } from "../pages/login";
+import {
+  createProfile as apiCreateProfile,
+  ProfileNotFoundError,
+  signInAndGetProfile,
+} from "./api/profile";
+import { RoomInstance } from "twilio/lib/rest/video/v1/room";
+import { profile } from "node:console";
 
 const initialState: StoreContextState = {
   posts: undefined,
-  loggedIn: false,
-  registrationSuccess: undefined,
+  user: undefined,
+  registrationStatus: undefined,
+  profile: undefined,
 };
 
 export const StoreContext = React.createContext<StoreContextValue>({
   ...initialState,
   register: () => {},
   login: () => {},
+  createPost: () => {},
+  getUserProfile: () => {},
+  createUserProfile: () => {},
 });
 
 type StoreContextState = {
   posts: PostInterface[];
-  loggedIn: boolean;
-  registrationSuccess?: boolean;
+  registrationStatus?: "none" | "user-created" | "user-and-profile-created";
   user?: firebase.User;
+  profile?: ProfileInterface;
 };
 
 type StoreContextActions = {
   register: (values: RegisterFormValues) => void;
   login: (values: LoginFormValues) => void;
+  createPost: (values: PostInterface) => void;
+  getUserProfile: (values: { authId: string }) => void;
+  createUserProfile: (values: ProfileInterface) => void;
 };
 
 type StoreContextValue = StoreContextState & StoreContextActions;
@@ -49,7 +67,8 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
 
         setState({
           ...state,
-          registrationSuccess: true,
+          user,
+          registrationStatus: "user-created",
         });
         // ...
       })
@@ -60,7 +79,7 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
         console.log({ errorCode, errorMessage });
         setState({
           ...state,
-          registrationSuccess: false,
+          registrationStatus: "none",
         });
         // ..
       });
@@ -78,7 +97,6 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
 
         setState({
           ...state,
-          loggedIn: true,
           user: user,
         });
 
@@ -91,9 +109,33 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
         console.log({ errorCode, errorMessage });
         setState({
           ...state,
-          loggedIn: false,
+          user: undefined,
         });
         // ..
+      });
+  };
+
+  const createPost = (post: PostInterface) => {
+    apiCreatePost(post).then((id) => router.push(`/post/${id}`));
+  };
+
+  const createUserProfile = (values: ProfileInterface) => {
+    apiCreateProfile(values).then(({ id }) =>
+      setState({
+        ...state,
+        profile: { ...values, _id: id },
+        registrationStatus: "user-and-profile-created",
+      })
+    );
+  };
+
+  const getUserProfile = ({ authId }: GetUserProfileRequest) => {
+    signInAndGetProfile(authId)
+      .then(console.log)
+      .catch((err) => {
+        if (err instanceof ProfileNotFoundError) {
+          setState({ ...state, registrationStatus: "user-created" });
+        }
       });
   };
 
@@ -110,6 +152,9 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
     ...state,
     login,
     register,
+    createPost,
+    getUserProfile,
+    createUserProfile,
   };
 
   return (
