@@ -22,16 +22,26 @@ export default function PostDetailsPage() {
 
   useEffect(() => {
     console.log({ postid });
-    if (postid === "") {
+    if (post === undefined) {
       router.push("/");
     }
   }, []);
+
+  if (!post) {
+
+    return (
+    <BaseLayout>
+    Loading...
+  </BaseLayout>
+    );
+
+  }
 
   const similarPosts = getSimilarPosts(postid as string, posts);
 
   return (
     <BaseLayout>
-      <div className="bg-gray-300">
+      <div>
         <section className="bg-white mb-4 px-6 pb-8">
           <h2 className="mb-3">Added 2 weeks ago</h2>
           <h1 className="text-3xl font-bold mb-5">{post.title}</h1>
@@ -47,7 +57,7 @@ export default function PostDetailsPage() {
           <img
             src="https://picsum.photos/640/400/?random"
             alt="Placeholder"
-            className="object-cover h-48 w-full mb-5"
+            className="object-cover h-48 w-full lg:w-1/2 m-auto mb-5"
           />
           <p className="font-bold text-xl mb-5">Details</p>
           <p className="font-bold mb-5">{post.subtitle}</p>
@@ -73,11 +83,13 @@ export default function PostDetailsPage() {
         </section>
 
         <section className={sectionClassNames}>
+          <div className="w-full lg:w-1/2 m-auto">
           <Button>Join</Button>
+          </div>
         </section>
 
-        <section className={sectionClassNames}>
-          <p className="font-bold text-xl mb-5">Similar listings nearby</p>
+        <section className="my-3 bg-white py-10">
+          <p className="font-bold text-lg mb-5 ml-5">Similar listings nearby</p>
           <PostList posts={similarPosts}></PostList>
         </section>
       </div>

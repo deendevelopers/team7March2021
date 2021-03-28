@@ -28,6 +28,8 @@ export default function BoardPage() {
       {(state) => (
         <BaseLayout>
           <InfoSection />
+
+          <InfoSection />
           <Board location={boardid as string} posts={state.posts} />;
         </BaseLayout>
       )}

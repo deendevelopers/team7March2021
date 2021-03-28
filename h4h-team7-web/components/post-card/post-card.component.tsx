@@ -37,7 +37,7 @@ export const PostCard = ({ post }: Props) => {
 
             <div>
               <header className="flex items-center justify-between leading-tight ">
-                <h1 className="text-xl font-bold">
+                <h1 className="text-xl font-semibold">
                   <a
                     className="no-underline hover:underline text-black"
                     href="#"
