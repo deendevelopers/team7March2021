@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 export interface ProfileInterface {
-    id: number;
+    auth_id: string;
     username: string;
     email: string;
     mobile: string;
@@ -14,8 +14,8 @@ interface ProfileModelInterface extends mongoose.Model<any> {
  }
 
 const profileSchema = new mongoose.Schema({
-    id: {
-        type: Number,
+    auth_id: {
+        type: String,
         required: true
     },
     username: {

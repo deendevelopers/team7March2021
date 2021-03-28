@@ -22,9 +22,9 @@ class ProfileRepository {
     })
   }
 
-// public async findByUsername(queryUsername: string): Promise<ProfileInterface | undefined> {
-//   return await MongoProfile.find({username: queryUsername}).exec();
-// }
+  public async getByAuthId(profileAuthId: string) {
+    return await MongoProfile.find({auth_id: profileAuthId}).exec();
+  }
 
   public async getProfileById(id: string): Promise<ProfileInterface | undefined> {
     console.log("getProfileById id: " + id )
