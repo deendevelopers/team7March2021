@@ -25,7 +25,7 @@ export const RegistrationForm = (props: Props) => {
 
   return (
     <div className="container mx-auto">
-      <div className="flex justify-center ml-0 my-12 lg:text-center">
+      <div className="flex justify-center ml-0 my-6 lg:text-center">
         <div className="w-full xl:w-3/4 flex justify-center">
           <div className="w-full bg-white rounded-lg lg:rounded-l-none">
             <h3 className="pt-4 ml-8 lg:ml-0 text-2xl lg:w-full w-2/3">
