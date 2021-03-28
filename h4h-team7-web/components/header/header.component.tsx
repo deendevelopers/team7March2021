@@ -7,7 +7,7 @@ const NavItem = (
   return (
     <Link href={props.href || ""}>
       <span
-        className={`xl:block font-abhaya-libre sentencecase text-gray-800 tracking-wider px-1 xl:px-8 text-md hover:underline ${props.className}`}
+        className={`xl:block font-abhaya-libre sentencecase text-gray-800 tracking-tight px-2 xl:px-8 text-md hover:underline ${props.className}`}
       >
         {props.children}
       </span>
@@ -18,8 +18,8 @@ const NavItem = (
 
 export const Header = () => {
   return (
-    <header className="lg:h-24 h-32 flex justify-between items-center top-0 right-0 z-20 ">
-      <div className="container mx-auto lg:px-6 px-8 flex items-center justify-between">
+    <header className="lg:h-24 h-24 flex justify-between items-center top-0 right-0 z-20 ">
+      <div className="container mx-auto px-4 lg:px-0 flex items-center justify-between">
         <div className="relative flex items-center">
           <div className="absolute bg-gray-200 w-8 h-8"></div>
           <Link href="/">
