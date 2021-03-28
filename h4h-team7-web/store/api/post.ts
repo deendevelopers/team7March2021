@@ -19,10 +19,10 @@ export const getPostById = async (postId: number): Promise<PostInterface | undef
 }
 
 export const updatePostById = async (post: PostInterface): Promise<{ id: string }> => {
-  return await apiFetch(`${POST_ENDPOINT}/${post.id}`, {
+  return await apiFetch(`${POST_ENDPOINT}/${post._id}`, {
     method: PUT,
     body: JSON.stringify({ post })
-  }).then(() => ({ id: `${post.id}` }) )
+  }).then(() => ({ id: `${post._id}` }) )
 }
 
 export const deletePostById = async (postId: number): Promise<{ id: string }> => {
