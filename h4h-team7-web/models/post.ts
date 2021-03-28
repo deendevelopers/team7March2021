@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
-import { ProfileInterface } from './profile';
 
 export interface PostInterface {
-    id: number;
+    id: string;
     title: string;
     description: string;
     location: SuggestedLocationInterface;
     date: Date;
+    type: 'service' | 'event';
     host_username: string;
     host_email?: string;
     host_mobile?: string;
@@ -44,6 +44,10 @@ const postSchema = new mongoose.Schema({
     suggestedLocation: suggestedLocationSchema,
     date: {
         type: Date,
+        required: true
+    },
+    type: {
+        type: String,
         required: true
     },
     host_username: {

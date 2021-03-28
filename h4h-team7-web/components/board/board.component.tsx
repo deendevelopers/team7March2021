@@ -1,11 +1,10 @@
 import React, { PropsWithChildren, useState } from "react";
 import { PostList } from "..";
-import { Post } from "../../store/types";
-import { InfoSection } from "../info-section/info-section.component";
+import { PostInterface } from "../../models/post";
 
 type Props = {
   location: string;
-  posts: Post[];
+  posts: PostInterface[];
 };
 
 type FilterItemProps = PropsWithChildren<{

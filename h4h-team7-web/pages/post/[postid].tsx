@@ -2,13 +2,12 @@ import { useRouter } from "next/router";
 import React, { useContext, useEffect } from "react";
 import { Button, PostList, PostTypeIndicator } from "../../components";
 import { BaseLayout } from "../../layouts/base-layout";
+import { PostInterface } from "../../models/post";
 import { StoreContext } from "../../store/store-context";
-
-import { Post } from "../../store/types";
 
 const sectionClassNames = "my-3 p-6 bg-white";
 
-function getSimilarPosts(postid: string, posts: Post[]) {
+function getSimilarPosts(postid: string, posts: PostInterface[]) {
   return posts.slice(0, 2);
 }
 
@@ -54,7 +53,6 @@ export default function PostDetailsPage() {
             className="object-cover h-48 w-full lg:w-1/2 m-auto mb-5"
           />
           <p className="font-bold text-xl mb-5">Details</p>
-          <p className="font-bold mb-5">{post.subtitle}</p>
           <p className="font-bold mb-5">{post.title}</p>
 
           <p className="body mb-10">{post.description}</p>
