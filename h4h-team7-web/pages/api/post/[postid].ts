@@ -3,7 +3,6 @@ import PostRepository from '../../../repository/PostRepository'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const body = JSON.parse(req.body)
     
     const {
       query: { postid },
@@ -17,6 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(200).send
         break;
       case "PUT":
+        const body = JSON.parse(req.body)
         await PostRepository.editPost(postIdString, body.post)
         res.status(200).send
         break;
