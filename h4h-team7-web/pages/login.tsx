@@ -24,6 +24,7 @@ export default function LoginPage() {
 
   return (
     <BaseLayout>
+    <div className="flex flex-col">
       <h3 className="pt-4 text-2xl ml-8 lg:m-0 lg:text-center">
         Login or Sign up below
       </h3>
@@ -36,6 +37,7 @@ export default function LoginPage() {
         Or{" "}
       </span>
       <RegistrationForm onSubmit={register}></RegistrationForm>
+      </div>
     </BaseLayout>
   );
 }
