@@ -28,13 +28,7 @@ export default function PostDetailsPage() {
   }, []);
 
   if (!post) {
-
-    return (
-    <BaseLayout>
-    Loading...
-  </BaseLayout>
-    );
-
+    return <BaseLayout>Loading...</BaseLayout>;
   }
 
   const similarPosts = getSimilarPosts(postid as string, posts);
@@ -46,7 +40,7 @@ export default function PostDetailsPage() {
           <h2 className="mb-3">Added 2 weeks ago</h2>
           <h1 className="text-3xl font-bold mb-5">{post.title}</h1>
 
-          {post.type === 'event' && <p className="mb-5">{post.date}</p>}
+          {post.type === "event" && <p className="mb-5">{post.date}</p>}
           <div className="flex align-middle items-center	">
             <div className="rounded-full bg-gray-500 w-12 h-12 mr-5"></div>
             <p className="inline flex-grow">Posted by Ajay M.</p>
@@ -84,7 +78,7 @@ export default function PostDetailsPage() {
 
         <section className={sectionClassNames}>
           <div className="w-full lg:w-1/2 m-auto">
-          <Button>Join</Button>
+            <Button>Join</Button>
           </div>
         </section>
 
