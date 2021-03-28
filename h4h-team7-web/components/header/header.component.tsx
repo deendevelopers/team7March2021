@@ -36,7 +36,7 @@ export const Header = () => {
           <nav className="flex items-center">
             <NavItem
               className="font-bold"
-              href={loggedIn ? "/login" : "/create-post"}
+              href={user === undefined ? "/login" : "/create-post"}
             >
               <>
                 <span

@@ -28,7 +28,7 @@ export default function CreatePostPage() {
 
   const RadioButtonClassName =
     "cursor-pointer py-3 px-4 no-underline rounded-full font-sans font-semibold text-sm border border-teal-300 hover:text-white hover:bg-teal-300 focus:outline-none active:shadow-none mr-2 flex-1 text-center";
-  const SelectedRadioButtonClassName = "bg-teal-300 text-white";
+  const SelectedRadioButtonClassName = "bg-indigo text-white";
 
   const applySelectedStyles = (required: "event" | "service") =>
     required === type ? SelectedRadioButtonClassName : "";
