@@ -1,10 +1,25 @@
 import React from "react";
 import { Button } from '..';
-import { BaseLayout } from "../../layouts/base-layout";
 
-export const RegistrationForm = () => {
-  return (
+export type RegisterFormValues = {
+  email: string;
+  password: string;
+	phone: string;
+}
+
+type Props = { 
+  onSubmit: (form: RegisterFormValues) => void;
+}
+
+export const RegistrationForm = (props: Props) => {
+  const handleSubmit = (e) => {
+    const { email, password, phone } = e.target.elements;
+
+    e.preventDefault();
+    props.onSubmit({ email: email.value, password: password.value, phone: phone.value });
+  }
  
+	return (
       <div className="container mx-auto">
         <div className="flex justify-center px-6 my-12">
           <div className="w-full xl:w-3/4 lg:w-11/12 flex">
@@ -22,7 +37,7 @@ export const RegistrationForm = () => {
               <span className="font-light text-gray-500">Sign up with your email address OR your phone number below.</span>
              
               </div>
-              <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+              <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded" onSubmit={handleSubmit}>
                 <div className="mb-4 md:flex md:justify-between">
                   
                 </div>
@@ -89,7 +104,7 @@ export const RegistrationForm = () => {
                   </div>
                 </div>
                 <div className="mb-6 text-center">
-                  <Button>Sign Up</Button>
+                  <Button type="submit">Sign Up</Button>
                 </div>
                 <hr className="mb-6 border-t" />
                 <div className="text-center">

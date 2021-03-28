@@ -70,9 +70,11 @@ export function Board({ posts, location }: Props) {
       <h1 className="text-2xl font-semibold mb-6 capitalize px-5">
         {location} Notice Board
       </h1>
-    <p>New noticeboards coming soon</p>
-      <hr className="mb-5" />
-      <FilterPanel />
+      <div className="m-5">
+        <p>New noticeboards coming soon!</p>
+        <hr className="my-5 inline-block w-full" />
+        <FilterPanel />
+      </div>
       <PostList posts={filteredPosts} />
     </div>
   );
