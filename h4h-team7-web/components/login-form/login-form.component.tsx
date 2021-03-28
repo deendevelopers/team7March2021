@@ -18,18 +18,18 @@ console.log({ email: email.value, password: password.value })
   };
 
   return (
-    <div className="container mx-auto ">
-      <div className="flex justify-center lg:pl-0 pl-8 lg:ml-0 my-12 lg:text-center">
+    <div className="container mx-auto mb-4">
+      <div className="flex justify-center lg:pl-0 lg:ml-0 lg:text-center">
         <div className="w-full xl:w-3/4 flex justify-center">
           <div className="w-full bg-white rounded-lg lg:rounded-l-none">
-            <h3 className="pt-4 text-2xl lg:w-full w-2/3">
+            <h3 className="pt-4 pl-8 lg:pl-0 text-2xl lg:w-full w-2/3">
               Already have an account?
             </h3>
-            <span className="text-sm font-light text-gray-500">
+            <span className="pl-8 lg:pl-0 text-sm font-light text-gray-500">
               Sign in with your login details.
             </span>
             <form
-              className="pr-8 lg:pr-0 pt-6 pb-8 mb-4 bg-white rounded flex flex-col"
+              className="pl-8 lg:pl-0 pr-8 lg:pr-0 pt-6 pb-8 mb-4 bg-white rounded flex flex-col"
               onSubmit={handleSubmit}
             >
               <div className="mb-4">
