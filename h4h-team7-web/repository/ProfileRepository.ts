@@ -22,11 +22,16 @@ class ProfileRepository {
     })
   }
 
-  public async getProfileById(id: number): Promise<ProfileInterface | undefined> {
+// public async findByUsername(queryUsername: string): Promise<ProfileInterface | undefined> {
+//   return await MongoProfile.find({username: queryUsername}).exec();
+// }
+
+  public async getProfileById(id: string): Promise<ProfileInterface | undefined> {
+    console.log("getProfileById id: " + id )
     return await MongoProfile.findById(id).exec();
   }
 
-  public async deleteProfile(id: number): Promise<void> {
+  public async deleteProfile(id: string): Promise<void> {
     MongoProfile.findByIdAndDelete(id, {}, () => {
       console.log
     })

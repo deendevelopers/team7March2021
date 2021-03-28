@@ -1,20 +1,19 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { ProfileInterface } from '../../../models/profile';
 import ProfileRepository from '../../../repository/ProfileRepository'
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
 
-    // not sure why "name" required on for const below
     const {
-      query: { profileid, name },
-      method,
+      query: { profileid },
     } = req
 
-    const profileIdNumber: number = + profileid;
+    var profileIdString: string = profileid as string;
 
     switch (req.method) {
       case "DELETE":
-        ProfileRepository.deleteProfile(profileIdNumber)
+        await ProfileRepository.deleteProfile(profileIdString)
         res.status(200).send
         break;
       case "PUT":
@@ -23,9 +22,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         res.status(200).send
         break;
       case "GET":
-        const post = ProfileRepository.getProfileById(profileIdNumber)
-        if (post) res.status(200).json(post)
-        else res.status(404).json({ message: `Profile with id [${profileIdNumber}] not found` })
+        const profile =  await ProfileRepository.getProfileById(profileIdString)
+        if (profile) res.status(200).json(profile)
+        else res.status(404).json({ message: `Profile with id [${profileid}] not found` })
         break;
         res.status(200).send
       default:

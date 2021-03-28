@@ -5,27 +5,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const body = JSON.parse(req.body)
     
-    // not sure why "name" required on for const below
     const {
-      query: { profileid, name },
-      method,
+      query: { postid },
     } = req
 
-    const profileIdNumber: number = + profileid;
+    var postIdString: string = postid as string;
 
     switch (req.method) {
       case "DELETE":
-        await PostRepository.deletePost(profileIdNumber)
+        await PostRepository.deletePost(postIdString)
         res.status(200).send
         break;
       case "PUT":
-        await PostRepository.editPost(profileIdNumber, body.post)
+        await PostRepository.editPost(postIdString, body.post)
         res.status(200).send
         break;
       case "GET":
-        const post = await PostRepository.getPostById(profileIdNumber)
+        const post = await PostRepository.getPostById(postIdString)
         if (post) res.status(200).json(post)
-        else res.status(404).json({ message: `Post with id [${profileIdNumber}] not found` })
+        else res.status(404).json({ message: `Post with id [${postIdString}] not found` })
         break;
       default:
         res.status(405).json({ message: `Method type ${req.method} is not available on this URL` })

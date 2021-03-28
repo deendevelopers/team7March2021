@@ -11,7 +11,7 @@ class PostRepository {
     return await MongoPost.find({})
   }
 
-  public async getPostById(id: number): Promise<PostInterface | undefined> {
+  public async getPostById(id: string): Promise<PostInterface | undefined> {
     return await MongoPost.findById(id).exec();
   }
 
@@ -19,13 +19,13 @@ class PostRepository {
     return await MongoPost.create(post)
   }
 
-  public async editPost(postId: number, post: PostInterface): Promise<void> {
+  public async editPost(postId: string, post: PostInterface): Promise<void> {
     return MongoPost.findByIdAndUpdate(postId, post, {}, () => {
       console.log("Updated")
     })
   }
 
-  public async deletePost(id: number): Promise<void> {
+  public async deletePost(id: string): Promise<void> {
     MongoPost.findByIdAndDelete(id, {}, () => {
       console.log("Deleted");
     })
