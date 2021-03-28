@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Button } from "../components";
+import { Button, TopicPanel } from "../components";
 import { BaseLayout } from "../layouts/base-layout";
 import { StoreContext } from "../store/store-context";
 
@@ -18,6 +18,17 @@ const SuggestedLocations = [
   },
 ];
 
+const Switch = () => {
+  return (
+    <div>
+      <label className="switch" htmlFor="checkbox">
+        <input type="checkbox" id="checkbox" />
+        <div className="slider round"></div>
+      </label>
+    </div>
+  );
+};
+
 export default function CreatePostPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -27,8 +38,8 @@ export default function CreatePostPage() {
   const { profile, createPost } = useContext(StoreContext);
 
   const RadioButtonClassName =
-    "cursor-pointer py-3 px-4 no-underline rounded-full font-sans font-semibold text-sm border border-teal-300 hover:text-white hover:bg-teal-300 focus:outline-none active:shadow-none mr-2 flex-1 text-center";
-  const SelectedRadioButtonClassName = "bg-indigo text-white";
+    "cursor-pointer py-3 px-4 no-underline rounded-lg font-sans font-semibold text-sm hover:bg-gray-100  focus:outline-none active:shadow-none mr-2 flex-1 text-center";
+  const SelectedRadioButtonClassName = "bg-indigo text-white hover:text-black";
 
   const applySelectedStyles = (required: "event" | "service") =>
     required === type ? SelectedRadioButtonClassName : "";
@@ -62,13 +73,32 @@ export default function CreatePostPage() {
         <form className="w-full" onSubmit={handleSubmit}>
           <div className="bg-white p-5 w-fulls mb-3">
             <h1 className="text-3xl mb-3 font-bold">Create a listing</h1>
-            <p className="mb-5">Find and provide useful services and events</p>
+            <p className="mb-5">
+              Contribute to your local Noticeboard by volunteering any way you
+              can - from reviewing a CV to just lending a listening ear. If
+              someone will find it helpful, add it to the board!
+            </p>
           </div>
-          <div className="bg-white p-6 w-fulls">
+          <div className="bg-white p-5 w-fulls mb-3">
+            <div className="flex flex-row w-full">
+              <label className="font-black flex-grow w-10">
+                Is your post about an event at a specific time and date?
+              </label>
+              <div>
+                <label className="switch" htmlFor="checkbox">
+                  <input type="checkbox" id="checkbox" />
+                  <div className="slider round"></div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 w-full">
             <fieldset>
               <legend className="sr-only">Event or service details</legend>
+
               <StyledInputDiv>
-                <label className="text-lg font-semibold" htmlFor="title">
+                <label className="text-lg font-bold" htmlFor="title">
                   Title
                 </label>
                 <input
@@ -80,7 +110,7 @@ export default function CreatePostPage() {
                 />
               </StyledInputDiv>
               <StyledInputDiv>
-                <label className="text-lg font-semibold" htmlFor="description">
+                <label className="text-lg font-bold" htmlFor="description">
                   Description
                 </label>
                 <input
@@ -91,8 +121,20 @@ export default function CreatePostPage() {
                   autoComplete="off"
                 />
               </StyledInputDiv>
+
+              <label className="text-lg font-bold" htmlFor="title">
+                Topic(s)
+              </label>
+
+              <p>
+                How would you best describe your listing? Select all that apply
+              </p>
+              <div className="my-5">
+                <TopicPanel />
+              </div>
+
               <StyledInputDiv>
-                <label className="text-lg font-semibold mb-3" htmlFor="type">
+                <label className="text-lg font-bold mb-3" htmlFor="type">
                   Type
                 </label>
                 <div className="flex flex-row justify-around">
@@ -140,13 +182,40 @@ export default function CreatePostPage() {
                     </option>
                   ))}
                 </select>
+                <div className="flex justify-center">
+                  <img
+                    src="/map.png"
+                    alt="Picture of the author"
+                    width={500}
+                    height={500}
+                    className="text-center"
+                  ></img>
+                </div>
               </StyledInputDiv>
             </fieldset>
           </div>
-          <div className="p-4 text-center">
-            <span>Strictly no selling, no swaps, no donations.</span>
+          <div className="p-4 text-left">
+            <span>
+              Notice is about bringing your community together to help each
+              other out. Strictly no selling or swapping items.
+            </span>
           </div>
-          <div className="p-4 bg-white">
+
+          <div className="bg-white p-5 w-fulls mb-3">
+            <div className="flex flex-row w-full">
+              <label className="font-bold flex-grow w-10">
+                I'm happy for my contact details to be shared with those who respond to the post.
+              </label>
+              <div>
+                <label className="switch" htmlFor="checkbox">
+                  <input type="checkbox" id="checkbox" />
+                  <div className="slider round"></div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-4 bg-white lg:w-1/4 m-auto mb-10">
             <Button type="submit">
               <span className="text-sm font-medium">Arrange</span>
             </Button>

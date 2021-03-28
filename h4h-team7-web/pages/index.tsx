@@ -24,7 +24,8 @@ const UserInfoSection = () => {
 }
 
 export default function Home() {
-  const { loggedIn } = useContext(StoreContext);
+  const { user } = useContext(StoreContext);
+  const loggedIn = user !== undefined;
   return (
     <BaseLayout>
       <div className="lg:container w-full mx-auto flex flex-col items-center relative z-10">
