@@ -12,3 +12,4 @@ export { AccountCreated } from './account-created/account-created.component';
 export { Account } from './account/account.component';
 export { Button } from './button/button.component';
 export { PostTypeIndicator } from './post-type-indicator/post-type-indicator.component';
+export { TopicPanel } from './topic-toggle/topic-toggle.component';

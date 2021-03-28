@@ -98,6 +98,8 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
         setState({
           ...state,
           user: user,
+          registrationStatus: "none",
+
         });
 
         // ...

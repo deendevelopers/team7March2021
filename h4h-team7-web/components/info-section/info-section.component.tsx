@@ -21,7 +21,7 @@ const InfoItem = (props: PropsWithChildren<InfoItemProps>) => {
 
 export const InfoSection = () => {
   return (
-    <div className="text-center p-10 flex items-center flex-col bg-gray-200">
+    <div className="w-full text-center p-10 flex items-center flex-col bg-gray-200 lg:bg-white">
             <p className="text-md mb-3 font-semibold">Hiya 👋</p>
 
       <h1 className="text-3xl mb-4 font-black">Welcome to Notice</h1>

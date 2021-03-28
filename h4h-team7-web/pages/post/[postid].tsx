@@ -72,8 +72,8 @@ export default function PostDetailsPage() {
         </section>
 
         <section className="my-4 px-10 py-4 border-box">
-          XX is about bringing the community together to blahblah.. Strictly no
-          selling, no swaps, no donations.
+        Notice is about bringing your community together to help each
+              other out. Strictly no selling or swapping items.
         </section>
 
         <section className={sectionClassNames}>
