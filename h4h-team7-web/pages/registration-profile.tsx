@@ -1,11 +1,7 @@
-import { BaseLayout } from '../layouts/base-layout';
+import React from "react";
+import { Account } from "../components";
+import { BaseLayout } from "../layouts/base-layout";
 
 export default function RegistrationProfile() {
-
-  return (
-
-    <BaseLayout>
-    FFOoooo
-  </BaseLayout>
-  )
+  return <Account />;
 }

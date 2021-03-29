@@ -17,7 +17,7 @@ const StyledInputDiv = (props) => (
 export const LoginForm = (props: Props) => {
   const handleSubmit = (e) => {
     const { email, password } = e.target.elements;
-console.log({ email: email.value, password: password.value })
+    console.log({ email: email.value, password: password.value });
     e.preventDefault();
     props.onSubmit({ email: email.value, password: password.value });
   };
@@ -48,37 +48,28 @@ console.log({ email: email.value, password: password.value })
                   placeholder="Email"
                 />
               </StyledInputDiv>
-              
+
               <div className="mb-4 md:flex md:justify-between lg:flex lg:flex-col">
-                
-              <StyledInputDiv>
-                <label className="text-lg font-semibold" htmlFor="password">
-                  Your password
-                </label>
-                <input
-                  id="password"
-                  className="border-b text-lg py-2"
-                  type="password"
-                  placeholder="******************"
-                />
-              </StyledInputDiv>
-                
-        
-                  </div>
-                  <p className="text-sm font-bold mb-8 text-blue-600">
-                      Having trouble logging in?
-                    </p>
-                <div className="mb-6 text-center">
-                  <Button>
-                    Sign In
-                  </Button>
-                  
-                </div>
-                <hr className="mb-6 border-t" />
-                <div className="text-center">
-                  
-                </div>
-              
+                <StyledInputDiv>
+                  <label className="text-lg font-semibold" htmlFor="password">
+                    Your password
+                  </label>
+                  <input
+                    id="password"
+                    className="border-b text-lg py-2"
+                    type="password"
+                    placeholder="******************"
+                  />
+                </StyledInputDiv>
+              </div>
+              <p className="text-sm font-bold mb-8 text-blue-600">
+                Having trouble logging in?
+              </p>
+              <div className="mb-6 text-center">
+                <Button type="submit">Sign In</Button>
+              </div>
+              <hr className="mb-6 border-t" />
+              <div className="text-center"></div>
             </form>
           </div>
         </div>

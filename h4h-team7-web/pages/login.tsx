@@ -28,8 +28,7 @@ export default function LoginPage() {
   }, [user, profile]);
 
   useEffect(() => {
-    if (registrationStatus === "user-created")
-      router.push("/registration-profile");
+    if (registrationStatus === "user-created") router.push("/account-created");
     else if (registrationStatus === "user-and-profile-created")
       router.push("/");
   }, [registrationStatus]);

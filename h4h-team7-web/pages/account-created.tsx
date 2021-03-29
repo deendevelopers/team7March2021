@@ -1,8 +1,6 @@
-import React from 'react';
-import { AccountCreated } from '../components';
-
-
+import React from "react";
+import { AccountCreated } from "../components";
 
 export default function AccountCreatedPage() {
-    return <AccountCreated />
-  }
+  return <AccountCreated />;
+}
