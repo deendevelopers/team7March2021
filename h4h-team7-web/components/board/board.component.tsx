@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 import React, { PropsWithChildren, useState } from "react";
 import { PostList } from "..";
 import { PostInterface } from "../../models/post";
@@ -92,9 +92,10 @@ export function Board({ posts, location }: Props) {
 
           const className = isActive
             ? "text-white bg-brick"
-            : "text-brick bg-lightbrick"
+            : "text-brick bg-lightbrick";
           return (
             <button
+              key={topic}
               onClick={() => toggleTopic(topic)}
               className={`rounded-full font-semibold ${className} px-7 py-2 mr-3 mb-3`}
             >
@@ -119,10 +120,13 @@ export function Board({ posts, location }: Props) {
         <FilterPanel />
         <p className="text-left uppercase font-semibold my-6">Topics</p>
         <TopicPanel />
-        <p className="text-left  font-semibold my-6">Sort by <i className="fas fa-angle-down"></i></p>
+        <p className="text-left  font-semibold my-6">
+          Sort by <i className="fas fa-angle-down"></i>
+        </p>
 
-       
-        <Button><Link href="/create-post">Create a Post</Link></Button>
+        <Button>
+          <Link href="/create-post">Create a Post</Link>
+        </Button>
       </div>
       <PostList posts={filteredPosts} />
     </div>
