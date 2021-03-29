@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 // import { sendgridApikey } from '../config';
 
 const accountSid = "ACbb1b8ecea8fea0ffb17b10cdc7a29848";
-const authToken = "30cb7114e0bedec5e685aef5d0159a43"
+const authToken = "51f0dea0db5c6752481cba04c1cc2c49"
 const client = twilio(accountSid, authToken);
 const FROM_PHONE_NUMBER = '+447481346557'
 

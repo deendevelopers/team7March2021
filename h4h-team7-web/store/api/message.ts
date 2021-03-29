@@ -2,7 +2,7 @@ import { apiFetch, MESSAGE_ENDPOINT, POST } from "."
 
 type Message = SmsMessage | EmailMessage
 
-type SmsMessage = { mobile: number; message: string };
+type SmsMessage = { mobile: string; message: string };
 type EmailMessage = { email: string; title: string; message: string }
 
 const isMobile = (obj: Record<string, any>): obj is SmsMessage => 'mobile' in obj;
@@ -13,14 +13,14 @@ export const sendMessage = async (messageRequest: Message): Promise<void> => {
 }
 
 const sendSmsMessage = async (sms: SmsMessage): Promise<boolean> => {
-  return await apiFetch(`${MESSAGE_ENDPOINT}/sms`, {
-    body: JSON.stringify({ message: { mobile: sms.mobile, message: sms.message } }),
+  return await apiFetch(`/post${MESSAGE_ENDPOINT}`, {
+    body: JSON.stringify({ message: { number: sms.mobile, message: sms.message } }),
     method: POST
   }).then(res => res.ok)
 }
 
 const sendEmailMessage = async ({ email, title, message }: EmailMessage): Promise<boolean> => {
-  return await apiFetch(`${MESSAGE_ENDPOINT}/email`, {
+  return await apiFetch(`/post${MESSAGE_ENDPOINT}/email`, {
     body: JSON.stringify({ message: { email, title, message } }),
     method: POST
   }).then(res => res.ok)

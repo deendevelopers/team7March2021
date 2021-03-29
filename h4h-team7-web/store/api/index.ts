@@ -10,7 +10,7 @@ export const DELETE = "DELETE"
 export const toJson = (res: Response) => res.json();
 
 export async function apiFetch(url: string, request?: RequestInit) {
-  return fetch(`api${url}`, {
+  return fetch(`${window.location.origin}/api${url}`, {
     ...request,
     headers: {
       'Content-Type': 'application/json'

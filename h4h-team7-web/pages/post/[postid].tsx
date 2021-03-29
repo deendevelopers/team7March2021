@@ -16,7 +16,8 @@ export default function PostDetailsPage() {
   const { postid } = router.query;
   console.log(router.query);
 
-  const { posts = [] } = useContext(StoreContext);
+  const { posts = [], joinEvent } = useContext(StoreContext);
+
   const post = posts.find((post) => `${post._id}` === `${postid}`);
 
   console.log({ post, posts });
@@ -78,7 +79,7 @@ export default function PostDetailsPage() {
 
         <section className={sectionClassNames}>
           <div className="w-full lg:w-1/2 m-auto">
-            <Button>Join</Button>
+            <Button onClick={() => joinEvent(postid as string)}>Join</Button>
           </div>
         </section>
 

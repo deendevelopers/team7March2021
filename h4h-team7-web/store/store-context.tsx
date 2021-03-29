@@ -15,12 +15,15 @@ import {
   ProfileNotFoundError,
   signInAndGetProfile,
 } from "./api/profile";
+import { SendMessageRequest } from '../pages/api/post/message';
+import { sendMessage } from './api/message';
 
 const initialState: StoreContextState = {
   posts: undefined,
   user: undefined,
   registrationStatus: "none",
   profile: undefined,
+  messageSent: false,
 };
 
 export const StoreContext = React.createContext<StoreContextValue>({
@@ -31,6 +34,7 @@ export const StoreContext = React.createContext<StoreContextValue>({
   getUserProfile: () => {},
   createUserProfile: () => {},
   saveUser: () => {},
+  joinEvent: () => {},
 });
 
 type StoreContextState = {
@@ -38,6 +42,7 @@ type StoreContextState = {
   registrationStatus?: "none" | "user-created" | "user-and-profile-created";
   user?: firebase.User;
   profile?: ProfileInterface;
+  messageSent: boolean;
 };
 
 type StoreContextActions = {
@@ -47,6 +52,7 @@ type StoreContextActions = {
   getUserProfile: (values: { authId: string }) => void;
   createUserProfile: (values: ProfileInterface) => void;
   saveUser: (user: firebase.User) => void;
+  joinEvent: (postId: string) => void;
 };
 
 type StoreContextValue = StoreContextState & StoreContextActions;
@@ -157,6 +163,27 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
     if (!state.posts) fetchPosts();
   }, [state.posts]);
 
+
+  const joinEvent = (postId: string) => {
+    console.log(postId);
+    const post = state.posts.find(post => `${post._id}` === `${postId}`);
+    console.log( { post });
+
+    if (!post) {
+      return;
+    }
+
+    sendMessage({
+      message: `You're attending ${post.title} at ${post.date.toLocaleString()}`,
+      mobile: '+447751370598',
+    }).then(res => {
+      setState({
+        ...state,
+        messageSent: true,
+      })
+    })
+  }
+
   const contextValue = {
     ...state,
     login,
@@ -165,6 +192,7 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
     getUserProfile,
     createUserProfile,
     saveUser,
+    joinEvent,
   };
 
   return (

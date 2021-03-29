@@ -1,5 +1,6 @@
-import { apiFetch, PROFILE_ENDPOINT, toJson, POST, GET, PUT, DELETE } from "."
+import { apiFetch, PROFILE_ENDPOINT, toJson, POST, GET, PUT, DELETE, MESSAGE_ENDPOINT } from "."
 import { ProfileInterface } from "../../models/profile"
+import { SendMessageRequest } from '../../pages/api/post/message'
 
 export const getProfiles = async (): Promise<ProfileInterface[]> => {
   return await apiFetch(PROFILE_ENDPOINT).then(toJson)
@@ -10,6 +11,13 @@ export const createProfile = async (profile: ProfileInterface): Promise<{ id: st
     method: POST,
     body: JSON.stringify({ profile })
   }).then(toJson)
+}
+
+export const sendText = async (message: SendMessageRequest): Promise<number> => {
+  return await apiFetch(MESSAGE_ENDPOINT + "/create", {
+    method: POST,
+    body: JSON.stringify({message })
+  }).then(res => res.status);
 }
 
 export class ProfileNotFoundError extends Error {

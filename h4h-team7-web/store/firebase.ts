@@ -30,10 +30,4 @@ const auth = firebase.auth();
 
 export { firebaseApp, auth, firebase };
 
-// window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-//   'size': 'invisible',
-//   'callback': (response) => {
-//     // reCAPTCHA solved, allow signInWithPhoneNumber.
-//     window.onSignInSubmit();
-//   }
-// });
+
