@@ -1,6 +1,7 @@
 import React from "react";
 import { BaseLayout } from "../../layouts/base-layout";
-
+import { Button } from "../../components";
+ 
 export const AccountCreated = () => {
   return (
     <BaseLayout>
@@ -13,26 +14,23 @@ export const AccountCreated = () => {
                 Account created!
               </h3>
               <div className="flex lg:px-8">
-                <span className="font-light text-gray-500">
+                <span className="font-light">
                   Congratulations! You now have full access to the the
                   noticeboard!
                 </span>
               </div>
               <div className="flex justify-center">
-              <div className="rounded-full bg-gray-300 w-20 h-20 my-10"></div>
+              <img src="/tick.svg" className="my-12"></img>
     
               </div>
               <form className="lg:px-8 pt-6 pb-8 mb-4 bg-white rounded">
-                <span className="font-light text-gray-500">
+                <span className="font-light ">
                   Let's update your account settings.
                 </span>
                 <div className="my-6 text-center">
-                  <button
-                    className="w-full px-4 py-2 font-bold text-white bg-teal-400 hover:bg-teal-300 focus:outline-none focus:shadow-outline"
-                    type="button"
-                  >
+                  <Button>
                     Update account
-                  </button>
+                  </Button>
                 </div>
                 <div className="flex justify-center">
                 <a className="font-light text-gray-500 underline">Skip for now.</a>
