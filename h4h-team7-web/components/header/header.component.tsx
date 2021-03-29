@@ -18,7 +18,7 @@ const NavItem = (
 };
 
 export const Header = () => {
-  const { user } = useContext(StoreContext);
+  const { user, profile } = useContext(StoreContext);
 
   return (
     <header className="lg:h-24 h-24 flex justify-between items-center top-0 right-0 z-20 ">
@@ -39,9 +39,7 @@ export const Header = () => {
               href={user === undefined ? "/login" : "/create-post"}
             >
               <>
-                <span
-                  className="rounded-full px-5 py-2 text-white bg-indigo font-bold"
-                >
+                <span className="rounded-full px-5 py-2 text-white bg-indigo font-bold">
                   <i className="fas fa-thumbtack mr-1 w-3 h-3"></i>
                   Create a post
                 </span>
@@ -51,7 +49,7 @@ export const Header = () => {
             {user ? (
               <NavItem className="underline hover:bold" href="/profile">
                 <div className="flex">
-                  <span>{user.email}</span>
+                  <span>{profile ? profile.username : user.email}</span>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

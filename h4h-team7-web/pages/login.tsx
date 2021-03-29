@@ -20,18 +20,11 @@ export default function LoginPage() {
   const router = useRouter();
 
   useEffect(() => {
-    if (user) getUserProfile({ authId: user.uid });
-  }, [user]);
-
-  useEffect(() => {
-    if (user && profile) router.push("/");
-  }, [user, profile]);
-
-  useEffect(() => {
-    if (registrationStatus === "user-created") router.push("/account-created");
-    else if (registrationStatus === "user-and-profile-created")
-      router.push("/");
-  }, [registrationStatus]);
+    if (user && !profile && registrationStatus === "user-created")
+      router.push("/account-created");
+    else if (user && !profile) getUserProfile({ authId: user.uid });
+    else if (user && profile) router.push("/");
+  }, [user, profile, registrationStatus]);
 
   return (
     <BaseLayout>

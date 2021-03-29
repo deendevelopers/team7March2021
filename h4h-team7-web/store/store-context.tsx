@@ -16,13 +16,11 @@ import {
   ProfileNotFoundError,
   signInAndGetProfile,
 } from "./api/profile";
-import { RoomInstance } from "twilio/lib/rest/video/v1/room";
-import { profile } from "node:console";
 
 const initialState: StoreContextState = {
   posts: undefined,
   user: undefined,
-  registrationStatus: undefined,
+  registrationStatus: "none",
   profile: undefined,
 };
 
@@ -68,7 +66,6 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
         setState({
           ...state,
           user,
-          registrationStatus: "user-created",
         });
         // ...
       })
@@ -79,7 +76,6 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
         console.log({ errorCode, errorMessage });
         setState({
           ...state,
-          registrationStatus: "none",
         });
         // ..
       });
@@ -98,8 +94,6 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
         setState({
           ...state,
           user: user,
-          registrationStatus: "none",
-
         });
 
         // ...
@@ -133,7 +127,7 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
 
   const getUserProfile = ({ authId }: GetUserProfileRequest) => {
     signInAndGetProfile(authId)
-      .then(console.log)
+      .then((profile) => setState({ ...state, profile }))
       .catch((err) => {
         if (err instanceof ProfileNotFoundError) {
           setState({ ...state, registrationStatus: "user-created" });
@@ -145,7 +139,13 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
     const fetchPosts = async () => {
       console.log("Getting posts");
       const posts = await getPosts();
-      setState((prevState) => ({ ...prevState, posts: posts.map(p => ({ ...p, type: Math.random() > 0.5 ? 'event' : 'service' })) }));
+      setState((prevState) => ({
+        ...prevState,
+        posts: posts.map((p) => ({
+          ...p,
+          type: Math.random() > 0.5 ? "event" : "service",
+        })),
+      }));
     };
     if (!state.posts) fetchPosts();
   }, [state.posts]);

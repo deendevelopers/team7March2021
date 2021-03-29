@@ -12,8 +12,10 @@ class ProfileRepository {
     return await MongoProfile.find({})
   }
 
-  public async createProfile(profile: ProfileInterface): Promise<void> {
-    return await MongoProfile.create(profile)
+  public async createProfile(profile: ProfileInterface): Promise<ProfileInterface> {
+    const result = await MongoProfile.create(profile);
+    console.log("Saved ", result)
+    return result;
   }
 
   public async editProfile(mongoId: string): Promise<void> {
