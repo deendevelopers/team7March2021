@@ -62,8 +62,8 @@ export default function CreatePostPage() {
       host_mobile: mobile,
       host_profile_image: profile_image,
       location: loc,
-      id: "1",
       date: new Date(),
+      _id: null
     });
   };
 

@@ -9,7 +9,7 @@ type Props = {
 
 export const PostCard = ({ post }: Props) => {
   return (
-    <Link href={`/post/${post.id}`}>
+    <Link href={`/post/${post._id}`}>
       <div className="h-full cursor-pointer">
         <div className="m-auto h-full">
           <div className="rounded-xl p-4 overflow-hidden h-full shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
