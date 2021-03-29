@@ -123,9 +123,10 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
   };
 
   const createPost = (post: PostInterface) => {
-    apiCreatePost(post).then(({ _id }) =>
-      setState({ ...state, posts: [...state.posts, { _id, ...post }] })
-    );
+    apiCreatePost(post).then(({ _id }) => {
+      console.log({ ...state, posts: [...state.posts, { _id, ...post }] });
+      setState({ ...state, posts: [...state.posts, { _id, ...post }] });
+    });
   };
 
   const createUserProfile = (values: ProfileInterface) => {
