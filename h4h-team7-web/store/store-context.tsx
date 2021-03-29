@@ -9,7 +9,6 @@ import { auth } from "./firebase";
 import { PostInterface } from "../models/post";
 import { ProfileInterface } from "../models/profile";
 import { createPost as apiCreatePost } from "./api/post";
-import router from "next/router";
 import { GetUserProfileRequest } from "../pages/login";
 import {
   createProfile as apiCreateProfile,
@@ -31,6 +30,7 @@ export const StoreContext = React.createContext<StoreContextValue>({
   createPost: () => {},
   getUserProfile: () => {},
   createUserProfile: () => {},
+  saveUser: () => {},
 });
 
 type StoreContextState = {
@@ -46,6 +46,7 @@ type StoreContextActions = {
   createPost: (values: PostInterface) => void;
   getUserProfile: (values: { authId: string }) => void;
   createUserProfile: (values: ProfileInterface) => void;
+  saveUser: (user: firebase.User) => void;
 };
 
 type StoreContextValue = StoreContextState & StoreContextActions;
@@ -79,6 +80,10 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
         });
         // ..
       });
+  };
+
+  const saveUser = (_user: firebase.User) => {
+    setState({ ...state, user: _user });
   };
 
   const login = ({ email, password }: LoginFormValues) => {
@@ -159,6 +164,7 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
     createPost,
     getUserProfile,
     createUserProfile,
+    saveUser,
   };
 
   return (

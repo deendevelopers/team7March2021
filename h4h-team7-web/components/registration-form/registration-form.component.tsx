@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "..";
+import MobileAuthPopup from "../firebase/MobileAuthPopup";
 
 export type RegisterFormValues = {
   email: string;
@@ -57,7 +58,7 @@ export const RegistrationForm = (props: Props) => {
                   placeholder="Email"
                 />
               </StyledInputDiv>
-              
+
               <StyledInputDiv>
                 <label className="text-lg font-semibold" htmlFor="phone">
                   Your phone number
@@ -68,7 +69,7 @@ export const RegistrationForm = (props: Props) => {
                   placeholder="Phone number"
                 />
               </StyledInputDiv>
-              
+
               <StyledInputDiv>
                 <label className="text-lg font-semibold" htmlFor="password">
                   Your password
@@ -80,12 +81,12 @@ export const RegistrationForm = (props: Props) => {
                   placeholder="******************"
                 />
               </StyledInputDiv>
-              
-                  <p className="text-xs italic text-red-500 mb-6">
-                    Please choose a password.
-                  </p>
-                
-                  <StyledInputDiv>
+
+              <p className="text-xs italic text-red-500 mb-6">
+                Please choose a password.
+              </p>
+
+              <StyledInputDiv>
                 <label className="text-lg font-semibold" htmlFor="c_password">
                   Confirm password
                 </label>
@@ -96,15 +97,12 @@ export const RegistrationForm = (props: Props) => {
                   placeholder="******************"
                 />
               </StyledInputDiv>
-                
-              
+
               <div className="mb-6 text-center">
                 <Button type="submit">Register</Button>
               </div>
               <hr className="mb-6 border-t" />
-              <div className="text-center">
-               
-              </div>
+              <div className="text-center"></div>
             </form>
           </div>
         </div>

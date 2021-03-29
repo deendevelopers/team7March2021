@@ -3,6 +3,8 @@ import React, { useContext, useEffect } from "react";
 import { LoginForm, RegistrationForm } from "../components";
 import { BaseLayout } from "../layouts/base-layout";
 import { StoreContext } from "../store/store-context";
+import { firebase } from "../store/firebase";
+import MobileAuthPopup from "../components/firebase/MobileAuthPopup";
 
 export type GetUserProfileRequest = {
   authId: string;
@@ -16,8 +18,21 @@ export default function LoginPage() {
     registrationStatus,
     getUserProfile,
     user,
+    saveUser,
   } = useContext(StoreContext);
   const router = useRouter();
+
+  useEffect(() => {
+    const unlistenToAuth = firebase.auth().onAuthStateChanged((authUser) => {
+      if (authUser) {
+        saveUser(authUser);
+      }
+    });
+    return () => {
+      unlistenToAuth();
+    };
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     if (user && !profile && registrationStatus === "user-created")
@@ -36,11 +51,12 @@ export default function LoginPage() {
           Log in or sign up to make use of the full noticeboard and interact
           with postings.
         </span>
-        <LoginForm onSubmit={login}></LoginForm>
-        <span className="block w-full text-lg font-light text-gray-700 lg:text-center text-center">
-          Or{" "}
-        </span>
-        <RegistrationForm onSubmit={register}></RegistrationForm>
+        <MobileAuthPopup />
+        {/* <LoginForm onSubmit={login}></LoginForm> */}
+        {/* <span className="block w-full text-lg font-light text-gray-700 lg:text-center text-center"> */}
+        {/* Or{" "} */}
+        {/* </span> */}
+        {/* <RegistrationForm onSubmit={register}></RegistrationForm> */}
       </div>
     </BaseLayout>
   );

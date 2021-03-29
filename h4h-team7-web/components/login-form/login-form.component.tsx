@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../../components";
+import MobileAuthPopup from "../firebase/MobileAuthPopup";
 
 export type LoginFormValues = {
   email: string;
