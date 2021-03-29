@@ -1,5 +1,6 @@
 import React from "react";
 import { BaseLayout } from "../../layouts/base-layout";
+import { Button } from "../../components";
 
 export const Account = () => {
   return (
@@ -8,17 +9,17 @@ export const Account = () => {
         <div className="flex justify-center px-6">
           <div className="w-full xl:w-3/4 lg:w-11/12 flex justify-center">
             
-            <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
+            <div className="w-full bg-white p-5 rounded-lg lg:rounded-l-none">
               <h3 className="lg:px-8 pb-12 text-2xl font-bold">
                 Account Information
               </h3>
               <div className="flex lg:px-8">
-                <span className="font-light text-gray-500">
+                <span>
                   Congratulations! You now have full access to the the
                   noticeboard!
                 </span>
               </div>
-              <div className="flex justify-between lg:px-8">
+              <div className="flex justify-start gap-4 lg:px-8">
                 <div className="bg-gray-300 w-20 h-20 my-10"></div>
                 <div className="my-10 flex flex-col">
                   <span className="font-bold text-black">Add a cover photo.</span>
@@ -41,10 +42,9 @@ export const Account = () => {
                     type="text"
                     placeholder="Add your name"
                   />
-                  <button className="w-100 px-4 py-2 text-sm font-bold text-white bg-teal-400 hover:bg-teal-300 focus:outline-none focus:shadow-outline"
-                    type="button">
+                  <Button>
                         Change profile name
-                    </button>
+                    </Button>
                 </div>
                 <div className="my-10 flex flex-col">
                     <label  className="block mb-2 font-bold text-black flex flex-col"
@@ -60,12 +60,9 @@ export const Account = () => {
                   />
                 </div>
                 
-                  <button
-                    className="w-full px-4 py-2 font-bold text-white bg-teal-400 hover:bg-teal-300 focus:outline-none focus:shadow-outline"
-                    type="button"
-                  >
+                  <Button>
                 Save
-                  </button>
+                  </Button>
                   
                 <div className="flex justify-center">
                   <a className="font-light text-gray-500 underline  py-6 lg:py-12">
