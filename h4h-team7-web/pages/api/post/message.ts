@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 // import { sendgridApikey } from '../config';
 
 const accountSid = "ACbb1b8ecea8fea0ffb17b10cdc7a29848";
-const authToken = "51f0dea0db5c6752481cba04c1cc2c49"
+const authToken = "a12e6c4b6e96f52f3b87915932710ab3"
 const client = twilio(accountSid, authToken);
 const FROM_PHONE_NUMBER = '+447481346557'
 
@@ -17,7 +17,7 @@ export type SendMessageRequest = {
 }
 
 function buildSms({ username, postTitle, message }: SendMessageRequest) {
-  return `${username} has responded to your post: ${postTitle}\n${message}`
+  return message;
 }
 
 function containsNumber(messageRequest: SendMessageRequest): boolean {
