@@ -1,5 +1,7 @@
+import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { Button, TopicPanel } from "../components";
+import useOnUpdateEffect from "../hooks/useOnUpdateEffect";
 import { BaseLayout } from "../layouts/base-layout";
 import { StoreContext } from "../store/store-context";
 
@@ -29,13 +31,22 @@ const Switch = () => {
   );
 };
 
+const StyledInputDiv = (props) => (
+  <div className="flex flex-col mb-4">{props.children}</div>
+);
+
 export default function CreatePostPage() {
+  const { profile, posts, createPost } = useContext(StoreContext);
+  const router = useRouter();
+
+  useOnUpdateEffect(() => {
+    if (posts) router.push(`post/${posts[posts.length - 1]._id}`);
+  }, [posts]);
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [type, setType] = useState<"service" | "event">("event");
   const [location, setLocation] = useState<string>(SuggestedLocations[0].name);
-
-  const { profile, createPost } = useContext(StoreContext);
 
   const RadioButtonClassName =
     "cursor-pointer py-3 px-4 no-underline rounded-lg font-sans font-semibold text-sm hover:bg-gray-100  focus:outline-none active:shadow-none mr-2 flex-1 text-center";
@@ -43,10 +54,6 @@ export default function CreatePostPage() {
 
   const applySelectedStyles = (required: "event" | "service") =>
     required === type ? SelectedRadioButtonClassName : "";
-
-  const StyledInputDiv = (props) => (
-    <div className="flex flex-col mb-4">{props.children}</div>
-  );
 
   const handleSubmit = (e) => {
     const loc = SuggestedLocations.find((l) => l.name === location);
@@ -62,7 +69,6 @@ export default function CreatePostPage() {
       host_mobile: mobile,
       host_profile_image: profile_image,
       location: loc,
-      id: "1",
       date: new Date(),
     });
   };
@@ -204,7 +210,8 @@ export default function CreatePostPage() {
           <div className="bg-white p-5 w-fulls mb-3">
             <div className="flex flex-row w-full">
               <label className="font-bold flex-grow w-10">
-                I'm happy for my contact details to be shared with those who respond to the post.
+                I'm happy for my contact details to be shared with those who
+                respond to the post.
               </label>
               <div>
                 <label className="switch" htmlFor="checkbox">

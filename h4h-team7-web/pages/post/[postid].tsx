@@ -17,9 +17,9 @@ export default function PostDetailsPage() {
   console.log(router.query);
 
   const { posts = [] } = useContext(StoreContext);
-  const post = posts.find((post) => `${post.id}` === `${postid}`);
+  const post = posts.find((post) => `${post._id}` === `${postid}`);
 
-  console.log({ post, posts })
+  console.log({ post, posts });
 
   useEffect(() => {
     console.log({ postid });
@@ -72,8 +72,8 @@ export default function PostDetailsPage() {
         </section>
 
         <section className="my-4 px-10 py-4 border-box">
-        Notice is about bringing your community together to help each
-              other out. Strictly no selling or swapping items.
+          Notice is about bringing your community together to help each other
+          out. Strictly no selling or swapping items.
         </section>
 
         <section className={sectionClassNames}>

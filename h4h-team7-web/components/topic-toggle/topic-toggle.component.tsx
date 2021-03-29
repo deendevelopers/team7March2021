@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 export function TopicPanel() {
   const topics = [
     "Activity",
@@ -25,9 +25,10 @@ export function TopicPanel() {
 
         const className = isActive
           ? "text-white bg-brick"
-          : "text-brick bg-lightbrick"
+          : "text-brick bg-lightbrick";
         return (
           <button
+            type="button"
             onClick={() => toggleTopic(topic)}
             className={`rounded-full font-semibold ${className} px-7 py-2 mr-3 mb-3`}
           >
@@ -37,4 +38,4 @@ export function TopicPanel() {
       })}
     </>
   );
-};
+}

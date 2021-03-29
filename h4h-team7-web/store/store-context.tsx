@@ -112,7 +112,9 @@ export const StoreContextWrapper = (props: PropsWithChildren<{}>) => {
   };
 
   const createPost = (post: PostInterface) => {
-    apiCreatePost(post).then((id) => router.push(`/post/${id}`));
+    apiCreatePost(post).then(({ _id }) =>
+      setState({ ...state, posts: [...state.posts, { _id, ...post }] })
+    );
   };
 
   const createUserProfile = (values: ProfileInterface) => {

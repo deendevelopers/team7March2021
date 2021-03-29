@@ -15,7 +15,7 @@ class PostRepository {
     return await MongoPost.findById(id).exec();
   }
 
-  public async createPost(post: PostInterface): Promise<void> {
+  public async createPost(post: PostInterface): Promise<PostInterface> {
     return await MongoPost.create(post)
   }
 

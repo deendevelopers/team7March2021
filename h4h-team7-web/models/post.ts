@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 export interface PostInterface {
-    id: string;
+    _id?: string;
     title: string;
     description: string;
     location: SuggestedLocationInterface;
@@ -29,10 +29,6 @@ const suggestedLocationSchema = new mongoose.Schema({
  })
 
 const postSchema = new mongoose.Schema({
-    id: {
-        type: Number,
-        required: true
-    },
     title: {
         type: String,
         required: true
